@@ -137,7 +137,7 @@ const PatientView = (props) => {
         </View>
       </View>
 
-      <View style={{ alignItems: 'stretch', flex: 1 }}>
+      <View style={{ alignItems: 'stretch', flexGrow: 1 }}>
         <TouchableOpacity
           style={styles.profileButton}
           onPress={() => props.navigation.navigate('VisitList', { language: language, patient: patient, userName })}>
@@ -146,35 +146,36 @@ const PatientView = (props) => {
             <Text style={styles.gridItemText}>></Text>
           </View>
         </TouchableOpacity>
+        <Text> Adult </Text>
         <TouchableOpacity
           style={styles.profileButton}
-          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.MedicalHistoryFull, language: language, patient: patient })}>
+          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Non, language: language, patient: patient })}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
-            <Text style={styles.gridItemText}>{LocalizedStrings[language].medicalHistory}</Text>
+            <Text style={styles.gridItemText}>{LocalizedStrings[language].pathologicalHistory}</Text>
             <Text style={styles.gridItemText}>></Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.profileButton}
-          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Complaint, language: language, patient: patient })}>
+          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.NonPathologicalHistory, language: language, patient: patient })}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
-            <Text style={styles.gridItemText}>{LocalizedStrings[language].complaint}</Text>
+            <Text style={styles.gridItemText}>{LocalizedStrings[language].nonPathologicalHistory}</Text>
             <Text style={styles.gridItemText}>></Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.profileButton}
-          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.ExaminationFull, language: language, patient: patient })}>
+          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.GynecologicalBackground, language: language, patient: patient })}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
-            <Text style={styles.gridItemText}>{LocalizedStrings[language].examination}</Text>
+            <Text style={styles.gridItemText}>{LocalizedStrings[language].gynecologicalBackground}</Text>
             <Text style={styles.gridItemText}>></Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.profileButton}
-          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Medicine, language: language, patient: patient })}>
+          onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.FamilyPathologicalHistory, language: language, patient: patient })}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
-            <Text style={styles.gridItemText}>{LocalizedStrings[language].medicine}</Text>
+            <Text style={styles.gridItemText}>{LocalizedStrings[language].familyPathologicalHistory}</Text>
             <Text style={styles.gridItemText}>></Text>
           </View>
         </TouchableOpacity>

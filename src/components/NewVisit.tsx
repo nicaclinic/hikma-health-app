@@ -111,33 +111,38 @@ const NewVisit = (props) => {
         </View>
       }
 
+
+
+      <Text> Adult </Text>
+
+
       <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('MedicalHistory', { patientId: patient.id, visitId, userName, language })}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>
             <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
           </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].medicalHistory}</Text>
+          <Text style={styles.actionText}>{LocalizedStrings[language].pathologicalHistory}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.Complaint)}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('NonPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>
-            <Image source={require('../images/complaint.png')} style={{ width: 50, height: 50 }} />
+            <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
           </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].complaint}</Text>
+          <Text style={styles.actionText}>{LocalizedStrings[language].nonPathologicalHistory}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Vitals', { patientId: patient.id, visitId, userName, language })}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('GynecologicalBackground', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>
             <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
           </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].vitals}</Text>
+          <Text style={styles.actionText}>{LocalizedStrings[language].gynecologicalBackground}</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Examination', { patientId: patient.id, visitId, userName, language })}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('FamilyPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>
             <Image source={require('../images/stethoscope.png')} style={{ width: 43, height: 47 }} />
           </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].examination}</Text>
+          <Text style={styles.actionText}>{LocalizedStrings[language].familyPathologicalHistory}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Medicine', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>

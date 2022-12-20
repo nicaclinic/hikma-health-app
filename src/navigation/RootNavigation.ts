@@ -24,6 +24,14 @@ import EditMedicalHistory from '../components/EditMedicalHistory';
 import EditPhysiotherapy from '../components/EditPhysiotherapy';
 import EditMedicine from '../components/EditMedicine';
 import SnapshotList from '../components/SnapshotList';
+import PathologicalHistory from '../components/PathologicalHistory';
+import EditPathologicalHistory from '../components/EditPathologicalHistory';
+import NonPathologicalHistory from '../components/NonPathologicalHistory';
+import EditNonPathologicalHistory from '../components/EditNonPathologicalHistory';
+import GynecologicalBackground from '../components/GynecologicalBackground';
+import EditGynecologicalBackground from '../components/EditGynecologicalBackground';
+import FamilyPathologicalHistory from '../components/FamilyPathologicalHistory';
+import EditFamilyPathologicalHistory from '../components/EditFamilyPathologicalHistory';
 
 const rootNavigator = createStackNavigator(
   {
@@ -157,6 +165,62 @@ const rootNavigator = createStackNavigator(
       screen: EditMedicine,
       navigationOptions: () => ({
         title: `EditMedicine`,
+        header: null
+      })
+    },
+    PathologicalHistory: {
+      screen: PathologicalHistory,
+      navigationOptions: () => ({
+        title: `PathologicalHistory`,
+        header: null
+      })
+    },
+    EditPathologicalHistory: {
+      screen: EditPathologicalHistory,
+      navigationOptions: () => ({
+        title: `EditPathologicalHistory`,
+        header: null
+      })
+    },
+    NonPathologicalHistory: {
+      screen: NonPathologicalHistory,
+      navigationOptions: () => ({
+        title: `NonPathologicalHistory`,
+        header: null
+      })
+    },
+    EditNonPathologicalHistory: {
+      screen: EditNonPathologicalHistory,
+      navigationOptions: () => ({
+        title: `EditNonPathologicalHistory`,
+        header: null
+      })
+    },
+    GynecologicalBackground: {
+      screen: GynecologicalBackground,
+      navigationOptions: () => ({
+        title: `GynecologicalBackground`,
+        header: null
+      })
+    },
+    EditGynecologicalBackground: {
+      screen: EditGynecologicalBackground,
+      navigationOptions: () => ({
+        title: `EditGynecologicalBackground`,
+        header: null
+      })
+    },
+    FamilyPathologicalHistory: {
+      screen: FamilyPathologicalHistory,
+      navigationOptions: () => ({
+        title: `FamilyPathologicalHistory`,
+        header: null
+      })
+    },
+    EditFamilyPathologicalHistory: {
+      screen: EditFamilyPathologicalHistory,
+      navigationOptions: () => ({
+        title: `EditFamilyPathologicalHistory`,
         header: null
       })
     },

@@ -7,6 +7,10 @@ import { EventTypes } from "../enums/EventTypes";
 import { MedicineDisplay } from "./Medicine";
 import { MedicalHistoryDisplay } from "./MedicalHistory";
 import { ExaminationDisplay } from "./Examination";
+import { PathologicalHistoryDisplay } from "./PathologicalHistory";
+import { NonPathologicalHistoryDisplay } from "./NonPathologicalHistory";
+import { GynecologicalBackgroundDisplay } from "./GynecologicalBackground";
+import { FamilyPathologicalHistoryDisplay } from "./FamilyPathologicalHistory";
 import Header from "./shared/Header";
 
 const SnapshotList = (props) => {
@@ -57,6 +61,22 @@ const SnapshotList = (props) => {
       case EventTypes.Complaint:
         eventTypeText = LocalizedStrings[language].complaint
         display = <Text>{metadataObj}</Text>
+        break
+      case EventTypes.PathologicalHistory:
+        eventTypeText = LocalizedStrings[language].pathologicalHistory
+        display = PathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.NonPathologicalHistory:
+        eventTypeText = LocalizedStrings[language].nonPathologicalHistory
+        display = NonPathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.GynecologicalBackground:
+        eventTypeText = LocalizedStrings[language].gynecologicalBackground
+        display = GynecologicalBackgroundDisplay(metadataObj, language)
+        break
+      case EventTypes.FamilyPathologicalHistory:
+        eventTypeText = LocalizedStrings[language].familyPathologicalHistory
+        display = FamilyPathologicalHistoryDisplay(metadataObj, language)
         break
       default:
         eventTypeText = item.event_type

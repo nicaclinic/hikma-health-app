@@ -98,6 +98,14 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  textbox: {
+    height: 120,
+    textAlignVertical: 'top'
+  },
+  smallTextbox: {
+    height: 80,
+    textAlignVertical: 'top'
+  },
   text: {
     margin: 10,
     color: '#FFFFFF'
@@ -356,4 +364,7 @@ export default StyleSheet.create({
     textAlign: "center",
     fontWeight: 'bold'
   },
+  smallText: {
+    fontSize: 8
+  }
 });

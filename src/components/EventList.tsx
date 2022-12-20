@@ -11,6 +11,10 @@ import { ExaminationDisplay } from "./Examination";
 import { MedicineDisplay } from "./Medicine";
 import { MedicalHistoryDisplay } from "./MedicalHistory";
 import { PhysiotherapyDisplay } from "./Physiotherapy";
+import { PathologicalHistoryDisplay } from "./PathologicalHistory";
+import { NonPathologicalHistoryDisplay } from "./NonPathologicalHistory";
+import { GynecologicalBackgroundDisplay } from "./GynecologicalBackground";
+import { FamilyPathologicalHistoryDisplay } from "./FamilyPathologicalHistory";
 import Header from "./shared/Header";
 
 const EventList = (props) => {
@@ -59,6 +63,14 @@ const EventList = (props) => {
       case EventTypes.DentalTreatment:
       case EventTypes.Notes:
         props.navigation.navigate('EditOpenTextEvent', { event, language })
+      case EventTypes.PathologicalHistory:
+        props.navigation.navigate('EditPathologicalHistory', { event, language, userName })
+      case EventTypes.NonPathologicalHistory:
+        props.navigation.navigate('EditNonPathologicalHistory', { event, language, userName })
+      case EventTypes.GynecologicalBackground:
+        props.navigation.navigate('EditGynecologicalBackgroundDisplay', { event, language, userName })
+      case EventTypes.FamilyPathologicalHistory:
+        props.navigation.navigate('EditFamilyPathologicalHistory', { event, language, userName })
       default:
         break
 
@@ -94,6 +106,22 @@ const EventList = (props) => {
       case EventTypes.Physiotherapy:
         eventTypeText = LocalizedStrings[language].physiotherapy
         display = PhysiotherapyDisplay(metadataObj, language)
+        break
+      case EventTypes.PathologicalHistory:
+        eventTypeText = LocalizedStrings[language].pathologicalHistory
+        display = PathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.NonPathologicalHistory:
+        eventTypeText = LocalizedStrings[language].nonPathologicalHistory
+        display = NonPathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.GynecologicalBackground:
+        eventTypeText = LocalizedStrings[language].gynecologicalBackground
+        display = GynecologicalBackgroundDisplay(metadataObj, language)
+        break
+      case EventTypes.FamilyPathologicalHistory:
+        eventTypeText = LocalizedStrings[language].familyPathologicalHistory
+        display = FamilyPathologicalHistoryDisplay(metadataObj, language)
         break
       default:
         eventTypeText = item.event_type
