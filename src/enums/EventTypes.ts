@@ -21,6 +21,19 @@ export enum EventTypes {
   PathologicalHistory = "Pathological Personal History",
   NonPathologicalHistory =  "Non-pathological Personal History",
   GynecologicalBackground = "Gynecological-obstetric background",
-  FamilyPathologicalHistory= "Family Pathological History",
-
+  FamilyPathologicalHistory = "Family Pathological History",
+  SocioeconomicSituation = "Socioeconomic Situation",
+  PhysicalExploration = "Physical exploration",
+  EmergencyAttentionSheet = "Emergency Attention Sheet",
+  PostnatalHistory = "Postnatal history",
+  Feeding = "Feeding",
+  Immunizations = "Immunizations",
+  PsychomotorDevelopment = "Psychomotor Development",
+  PediatricPathologicalHistory = "Pediatric Pathological Personal History",
+  PediatricPhysicalExam = "Pediatric Physical Exam",
+  SubsequentEvolutionNote = "Subsequent Evolution Note",
+  NursingNote = "Nursing Note",
+  UltrasoundConsultation = "Ultrasound Consultation",
+  LaboratoryConsultation = "Laboratory Consultation",
+  OdontologyConsultation = "Odontology Consultation"
 }

@@ -250,7 +250,7 @@ const PatientList = (props) => {
               />
             </View>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <TextInput
                 placeholder={LocalizedStrings[language].country}
                 onChangeText={(text) => setCountry(text)}
@@ -261,14 +261,14 @@ const PatientList = (props) => {
                 onChangeText={(text) => setHometown(text)}
                 value={hometown}
               />
-            </View>
+            </View> */}
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <TextInput
+              {/* <TextInput
                 placeholder={LocalizedStrings[language].camp}
                 onChangeText={(text) => setCamp(text)}
                 value={camp}
-              />
+              /> */}
               <TextInput
                 placeholder={LocalizedStrings[language].phone}
                 onChangeText={(text) => setPhone(text)}

@@ -32,6 +32,34 @@ import GynecologicalBackground from '../components/GynecologicalBackground';
 import EditGynecologicalBackground from '../components/EditGynecologicalBackground';
 import FamilyPathologicalHistory from '../components/FamilyPathologicalHistory';
 import EditFamilyPathologicalHistory from '../components/EditFamilyPathologicalHistory';
+import SocioeconomicSituation from '../components/SocioeconomicSituation';
+import EditSocioeconomicSituation from '../components/EditSocioeconomicSituation';
+import PhysicalExploration from '../components/PhysicalExploration';
+import EditPhysicalExploration from '../components/EditPhysicalExploration';
+import EmergencyAttentionSheet from '../components/EmergencyAttentionSheet';
+import EditEmergencyAttentionSheet from '../components/EditEmergencyAttentionSheet';
+import PostnatalHistory from '../components/PostnatalHistoy';
+import EditPostnatalHistory from '../components/EditPostnatalHistory';
+import Feeding from '../components/Feeding';
+import EditFeeding from '../components/EditFeeding';
+import Immunizations from '../components/Immunizations';
+import EditImmunizations from '../components/EditImmunizations';
+import PsychomotorDevelopment from '../components/PsychomotorDevelopment';
+import EditPsychomotorDevelopment from '../components/EditPsychomotorDevelopment';
+import PediatricPathologicalHistory from '../components/PediatricPathologicalHistory';
+import EditPediatricPathologicalHistory from '../components/EditPediatricPathologicalHistory';
+import PediatricPhysicalExam from '../components/PediatricPhysicalExam';
+import EditPediatricPhysicalExam from '../components/PediatricPhysicalExam';
+import SubsequentEvolutionNote from '../components/SubsequentEvolutionNote';
+import EditSubsequentEvolutionNote from '../components/EditSubsequentEvolutionNote';
+import NursingNote from '../components/NursingNote';
+import EditNursingNote from '../components/EditNursingNote';
+import UltrasoundConsultation from '../components/UltrasoundConsultation';
+import EditUltrasoundConsultation from '../components/EditUltrasoundConsultation';
+import LaboratoryConsultation from '../components/LaboratoryConsultation';
+import EditLaboratoryConsultation from '../components/EditLaboratoryConsultation';
+import OdontologyConsultation from '../components/OdontologyConsultation';
+import EditOdontologyConsultation from '../components/EditOdontologyConsultation';
 
 const rootNavigator = createStackNavigator(
   {
@@ -221,6 +249,202 @@ const rootNavigator = createStackNavigator(
       screen: EditFamilyPathologicalHistory,
       navigationOptions: () => ({
         title: `EditFamilyPathologicalHistory`,
+        header: null
+      })
+    },
+    SocioeconomicSituation: {
+      screen: SocioeconomicSituation,
+      navigationOptions: () => ({
+        title: `SocioeconomicSituation`,
+        header: null
+      })
+    },
+    EditSocioeconomicSituation: {
+      screen: EditSocioeconomicSituation,
+      navigationOptions: () => ({
+        title: `EditSocioeconomicSituation`,
+        header: null
+      })
+    },
+    PhysicalExploration: {
+      screen: PhysicalExploration,
+      navigationOptions: () => ({
+        title: `PhysicalExploration`,
+        header: null
+      })
+    },
+    EditPhysicalExploration: {
+      screen: EditPhysicalExploration,
+      navigationOptions: () => ({
+        title: `EditPhysicalExploration`,
+        header: null
+      })
+    },
+    EmergencyAttentionSheet: {
+      screen: EmergencyAttentionSheet,
+      navigationOptions: () => ({
+        title: `EmergencyAttentionSheet`,
+        header: null
+      })
+    },
+    EditEmergencyAttentionSheet: {
+      screen: EditEmergencyAttentionSheet,
+      navigationOptions: () => ({
+        title: `EditEmergencyAttentionSheet`,
+        header: null
+      })
+    },
+    PostnatalHistory: {
+      screen: PostnatalHistory,
+      navigationOptions: () => ({
+        title: `PostnatalHistory`,
+        header: null
+      })
+    },
+    EditPostnatalHistory: {
+      screen: EditPostnatalHistory,
+      navigationOptions: () => ({
+        title: `EditPostnatalHistory`,
+        header: null
+      })
+    },
+    Feeding: {
+      screen: Feeding,
+      navigationOptions: () => ({
+        title: `Feeding`,
+        header: null
+      })
+    },
+    EditFeeding: {
+      screen: EditFeeding,
+      navigationOptions: () => ({
+        title: `EditFeeding`,
+        header: null
+      })
+    },
+    Immunizations: {
+      screen: Immunizations,
+      navigationOptions: () => ({
+        title: `Immunizations`,
+        header: null
+      })
+    },
+    EditImmunizations: {
+      screen: EditImmunizations,
+      navigationOptions: () => ({
+        title: `EditImmunizations`,
+        header: null
+      })
+    },
+    PsychomotorDevelopment: {
+      screen: PsychomotorDevelopment,
+      navigationOptions: () => ({
+        title: `PsychomotorDevelopment`,
+        header: null
+      })
+    },
+    EditPsychomotorDevelopment: {
+      screen: EditPsychomotorDevelopment,
+      navigationOptions: () => ({
+        title: `EditPsychomotorDevelopment`,
+        header: null
+      })
+    },
+    PediatricPathologicalHistory: {
+      screen: PediatricPathologicalHistory,
+      navigationOptions: () => ({
+        title: `PediatricPathologicalHistory`,
+        header: null
+      })
+    },
+    EditPediatricPathologicalHistory: {
+      screen: EditPediatricPathologicalHistory,
+      navigationOptions: () => ({
+        title: `EditPediatricPathologicalHistory`,
+        header: null
+      })
+    },
+    PediatricPhysicalExam: {
+      screen: PediatricPhysicalExam,
+      navigationOptions: () => ({
+        title: `PediatricPhysicalExam`,
+        header: null
+      })
+    },
+    EditPediatricPhysicalExam: {
+      screen: EditPediatricPhysicalExam,
+      navigationOptions: () => ({
+        title: `EditPediatricPhysicalExam`,
+        header: null
+      })
+    },
+    SubsequentEvolutionNote: {
+      screen: SubsequentEvolutionNote,
+      navigationOptions: () => ({
+        title: `SubsequentEvolutionNote`,
+        header: null
+      })
+    },
+    EditSubsequentEvolutionNote: {
+      screen: EditSubsequentEvolutionNote,
+      navigationOptions: () => ({
+        title: `EditSubsequentEvolutionNote`,
+        header: null
+      })
+    },
+    NursingNote: {
+      screen: NursingNote,
+      navigationOptions: () => ({
+        title: `NursingNote`,
+        header: null
+      })
+    },
+    EditNursingNote: {
+      screen: EditNursingNote,
+      navigationOptions: () => ({
+        title: `EditNursingNote`,
+        header: null
+      })
+    },
+    UltrasoundConsultation: {
+      screen: UltrasoundConsultation,
+      navigationOptions: () => ({
+        title: `UltrasoundConsultation`,
+        header: null
+      })
+    },
+    EditUltrasoundConsultation: {
+      screen: EditUltrasoundConsultation,
+      navigationOptions: () => ({
+        title: `EditUltrasoundConsultation`,
+        header: null
+      })
+    },
+    LaboratoryConsultation: {
+      screen: LaboratoryConsultation,
+      navigationOptions: () => ({
+        title: `LaboratoryConsultation`,
+        header: null
+      })
+    },
+    EditLaboratoryConsultation: {
+      screen: EditLaboratoryConsultation,
+      navigationOptions: () => ({
+        title: `EditLaboratoryConsultation`,
+        header: null
+      })
+    },
+    OdontologyConsultation: {
+      screen: OdontologyConsultation,
+      navigationOptions: () => ({
+        title: `OdontologyConsultation`,
+        header: null
+      })
+    },
+    EditOdontologyConsultation: {
+      screen: EditOdontologyConsultation,
+      navigationOptions: () => ({
+        title: `EditOdontologyConsultation`,
         header: null
       })
     },

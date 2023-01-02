@@ -131,7 +131,7 @@ const NonPathologicalHistory = (props) => {
                 value={alcoholismAmount}
               />
             </View>
-                        <View style={styles.inputRow}>
+            <View style={styles.inputRow}>
               <TextInput
                 style={styles.inputs}
                 placeholder= {LocalizedStrings[language].typeOfLiquor}

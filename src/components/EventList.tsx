@@ -15,6 +15,21 @@ import { PathologicalHistoryDisplay } from "./PathologicalHistory";
 import { NonPathologicalHistoryDisplay } from "./NonPathologicalHistory";
 import { GynecologicalBackgroundDisplay } from "./GynecologicalBackground";
 import { FamilyPathologicalHistoryDisplay } from "./FamilyPathologicalHistory";
+import { SocioeconomicSituationDisplay } from "./SocioeconomicSituation";
+import { PhysicalExplorationDisplay } from "./PhysicalExploration";
+import { EmergencyAttentionSheetDisplay } from "./EmergencyAttentionSheet";
+import { PostnatalHistoryDisplay } from "./PostnatalHistoy";
+import { FeedingDisplay } from "./Feeding";
+import { ImmunizationsDisplay } from "./Immunizations";
+import { PsychomotorDevelopmentDisplay } from "./PsychomotorDevelopment";
+import { PediatricPathologicalHistoryDisplay } from "./PediatricPathologicalHistory";
+import { PediatricPhysicalExamDisplay } from "./PediatricPhysicalExam";
+import { SubsequentEvolutionNoteDisplay } from "./SubsequentEvolutionNote";
+import { NursingNoteDisplay } from "./NursingNote";
+import { UltrasoundConsultationDisplay } from "./UltrasoundConsultation";
+import { LaboratoryConsultationDisplay } from "./LaboratoryConsultation";
+import { OdontologyConsultationDisplay } from "./OdontologyConsultation";
+
 import Header from "./shared/Header";
 
 const EventList = (props) => {
@@ -71,6 +86,34 @@ const EventList = (props) => {
         props.navigation.navigate('EditGynecologicalBackgroundDisplay', { event, language, userName })
       case EventTypes.FamilyPathologicalHistory:
         props.navigation.navigate('EditFamilyPathologicalHistory', { event, language, userName })
+      case EventTypes.GynecologicalBackground:
+        props.navigation.navigate('EditSocioeconomicSituation', { event, language, userName })
+      case EventTypes.PhysicalExploration:
+        props.navigation.navigate('EditPhysicalExploration', { event, language, userName })
+      case EventTypes.EmergencyAttentionSheet:
+        props.navigation.navigate('EditEmergencyAttentionSheet', { event, language, userName })
+      case EventTypes.PostnatalHistory:
+        props.navigation.navigate('EditPostnatalHistory', { event, language, userName })
+      case EventTypes.Feeding:
+        props.navigation.navigate('EditFeeding', { event, language, userName })
+      case EventTypes.Immunizations:
+        props.navigation.navigate('EditImmunizations', { event, language, userName })
+      case EventTypes.PsychomotorDevelopment:
+        props.navigation.navigate('EditPsychomotorDevelopment', { event, language, userName })
+      case EventTypes.PediatricPathologicalHistory:
+        props.navigation.navigate('EditPediatricPathologicalHistory', { event, language, userName })
+      case EventTypes.PediatricPhysicalExam:
+        props.navigation.navigate('EditPediatricPhysicalExam', { event, language, userName })
+      case EventTypes.SubsequentEvolutionNote:
+        props.navigation.navigate('EditSubsequentEvolutionNote', { event, language, userName })
+      case EventTypes.NursingNote:
+        props.navigation.navigate('EditNursingNote', { event, language, userName })
+      case EventTypes.UltrasoundConsultation:
+        props.navigation.navigate('EditUltrasoundConsultation', { event, language, userName })
+      case EventTypes.LaboratoryConsultation:
+        props.navigation.navigate('EditLaboratoryConsultation', { event, language, userName })
+      case EventTypes.OdontologyConsultation:
+        props.navigation.navigate('EditOdontologyConsultation', { event, language, userName })
       default:
         break
 
@@ -122,6 +165,62 @@ const EventList = (props) => {
       case EventTypes.FamilyPathologicalHistory:
         eventTypeText = LocalizedStrings[language].familyPathologicalHistory
         display = FamilyPathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.SocioeconomicSituation:
+        eventTypeText = LocalizedStrings[language].socioeconomicSituation
+        display = SocioeconomicSituationDisplay(metadataObj, language)
+        break
+      case EventTypes.PhysicalExploration:
+        eventTypeText = LocalizedStrings[language].physicalExploration
+        display = PhysicalExplorationDisplay(metadataObj, language)
+        break
+      case EventTypes.EmergencyAttentionSheet:
+        eventTypeText = LocalizedStrings[language].emergencyAttentionSheet
+        display = EmergencyAttentionSheetDisplay(metadataObj, language)
+        break
+      case EventTypes.PostnatalHistory:
+        eventTypeText = LocalizedStrings[language].postnatalHistory
+        display = PostnatalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.Feeding:
+        eventTypeText = LocalizedStrings[language].feeding
+        display = FeedingDisplay(metadataObj, language)
+        break
+      case EventTypes.Immunizations:
+        eventTypeText = LocalizedStrings[language].immunizations
+        display = ImmunizationsDisplay(metadataObj, language)
+        break
+      case EventTypes.PsychomotorDevelopment:
+        eventTypeText = LocalizedStrings[language].psychomotorDevelopment
+        display = PsychomotorDevelopmentDisplay(metadataObj, language)
+        break
+      case EventTypes.PediatricPathologicalHistory:
+        eventTypeText = LocalizedStrings[language].pediatricPathologicalHistory
+        display = PediatricPathologicalHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.PediatricPhysicalExam:
+        eventTypeText = LocalizedStrings[language].pediatricPhysicalExam
+        display = PediatricPhysicalExamDisplay(metadataObj, language)
+        break
+      case EventTypes.SubsequentEvolutionNote:
+        eventTypeText = LocalizedStrings[language].subsequentEvolutionNote
+        display = SubsequentEvolutionNoteDisplay(metadataObj, language)
+        break
+      case EventTypes.NursingNote:
+        eventTypeText = LocalizedStrings[language].nursingNote
+        display = NursingNoteDisplay(metadataObj, language)
+        break
+      case EventTypes.UltrasoundConsultation:
+        eventTypeText = LocalizedStrings[language].ultrasoundConsultation
+        display = UltrasoundConsultationDisplay(metadataObj, language)
+        break
+      case EventTypes.LaboratoryConsultation:
+        eventTypeText = LocalizedStrings[language].laboratoryConsultation
+        display = LaboratoryConsultationDisplay(metadataObj, language)
+        break
+      case EventTypes.OdontologyConsultation:
+        eventTypeText = LocalizedStrings[language].odontologyConsultation
+        display = OdontologyConsultationDisplay(metadataObj, language)
         break
       default:
         eventTypeText = item.event_type

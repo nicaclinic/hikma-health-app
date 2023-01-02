@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  View, Text, Image, TextInput, TouchableOpacity, Picker
+  View, Text, Image, TextInput, TouchableOpacity, Picker, ScrollView
 } from 'react-native';
 import styles from './Style';
 import { EventTypes } from '../enums/EventTypes';
@@ -64,121 +64,221 @@ const NewVisit = (props) => {
   }
 
   return (
-    <View style={styles.containerLeft}>
-      {Header({
-        action: () => existingVisit ?
-          props.navigation.navigate('EventList', { language, patient }) :
-          props.navigation.navigate('PatientView', { language, patient }), language, setLanguage
-      })}
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.containerLeft}>
+        {Header({
+          action: () => existingVisit ?
+            props.navigation.navigate('EventList', { language, patient }) :
+            props.navigation.navigate('PatientView', { language, patient }), language, setLanguage
+        })}
 
-      {existingVisit ?
-        null :
-        <View style={styles.inputsContainer}>
-          <View style={styles.inputRow}>
-            <DatePicker
-              style={styles.datePicker}
-              date={visitDate}
-              mode="date"
-              placeholder={LocalizedStrings[language].selectDob}
-              format="YYYY-MM-DD"
-              minDate="1900-05-01"
-              maxDate={today.toISOString().split('T')[0]}
-              confirmBtnText={LocalizedStrings[language].confirm}
-              cancelBtnText={LocalizedStrings[language].cancel}
-              customStyles={{
-                dateInput: {
-                  alignItems: 'flex-start',
-                  borderWidth: 0
-                }
-              }}
-              androidMode='spinner'
-              onDateChange={(date) => {
-                setVisitDate(date)
-                database.editVisitDate(visitId, moment(date).toISOString())
-              }}
-            />
-            <TextInput
-              style={[styles.inputs, { color: typeTextColor }]}
-              placeholder={LocalizedStrings[language].visitType}
-              onChangeText={(text) => {
-                setTypeTextColor('#000000')
-                setVisitType(text)
-              }}
-              onEndEditing={handleSaveVisitType}
-              value={visitType}
-            />
+        {existingVisit ?
+          null :
+          <View style={styles.inputsContainer}>
+            <View style={styles.inputRow}>
+              <DatePicker
+                style={styles.datePicker}
+                date={visitDate}
+                mode="date"
+                placeholder={LocalizedStrings[language].selectDob}
+                format="YYYY-MM-DD"
+                minDate="1900-05-01"
+                maxDate={today.toISOString().split('T')[0]}
+                confirmBtnText={LocalizedStrings[language].confirm}
+                cancelBtnText={LocalizedStrings[language].cancel}
+                customStyles={{
+                  dateInput: {
+                    alignItems: 'flex-start',
+                    borderWidth: 0
+                  }
+                }}
+                androidMode='spinner'
+                onDateChange={(date) => {
+                  setVisitDate(date)
+                  database.editVisitDate(visitId, moment(date).toISOString())
+                }}
+              />
+              <TextInput
+                style={[styles.inputs, { color: typeTextColor }]}
+                placeholder={LocalizedStrings[language].visitType}
+                onChangeText={(text) => {
+                  setTypeTextColor('#000000')
+                  setVisitType(text)
+                }}
+                onEndEditing={handleSaveVisitType}
+                value={visitType}
+              />
+            </View>
           </View>
+        }
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('EmergencyAttentionSheet', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].emergencyAttentionSheet}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('SubsequentEvolutionNote', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].subsequentEvolutionNote}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('NursingNote', { patientId: patient.id, visitId, userName, language })}>
+          <View style={styles.actionIcon}>
+              <Image source={require('../images/notes.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].nursingNote}</Text>
+          </TouchableOpacity>
         </View>
-      }
 
-
-
-      <Text> Adult </Text>
-
-
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('UltrasoundConsultation', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].ultrasoundConsultation}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('LaboratoryConsultation', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].laboratoryConsultation}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('OdontologyConsultation', { patientId: patient.id, visitId, userName, language })}>
           <View style={styles.actionIcon}>
-            <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].pathologicalHistory}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('NonPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].nonPathologicalHistory}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('GynecologicalBackground', { patientId: patient.id, visitId, userName, language })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].gynecologicalBackground}</Text>
-        </TouchableOpacity>
+              <Image source={require('../images/notes.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].odontologyConsultation}</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('FamilyPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/stethoscope.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].familyPathologicalHistory}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('SocioeconomicSituation', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicine.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].socioeconomicSituation}</Text>
+          </TouchableOpacity>
+        </View>
+
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].adult}</Text>
+        </View>
+
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].pathologicalHistory}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('NonPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].nonPathologicalHistory}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('GynecologicalBackground', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].gynecologicalBackground}</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PhysicalExploration', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].physicalExploration}</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].pediatric}</Text>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PostnatalHistory', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/stethoscope.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].postnatalHistory}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Feeding', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicine.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].feeding}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Immunizations', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].immunizations}</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PsychomotorDevelopment', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].psychomotorDevelopment}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PediatricPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicine.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].pediatricPathologicalHistory}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PediatricPhysicalExam', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicalHistory.png')} style={{ width: 53, height: 51 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].pediatricPhysicalExam}</Text>
+          </TouchableOpacity>
+        </View>
+
+
+        <Text> All </Text>
+
+
+        
+
+        {/* <View style={styles.gridContainer}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.DentalTreatment)}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/dental_treatment.png')} style={{ width: 50, height: 50 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].dentalTreatment}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.Notes)}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/notes.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].notes}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Covid19Form', { language, patient, visitId, userName })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/covid.png')} style={{ width: 43, height: 47 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].covidScreening}</Text>
+          </TouchableOpacity>
+        </View> */}
       </View>
-
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('FamilyPathologicalHistory', { patientId: patient.id, visitId, userName, language })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/stethoscope.png')} style={{ width: 43, height: 47 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].familyPathologicalHistory}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Medicine', { patientId: patient.id, visitId, userName, language })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/medicine.png')} style={{ width: 77, height: 38 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].medicineDispensed}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Physiotherapy', { patientId: patient.id, visitId, userName, language })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/doctor.png')} style={{ width: 40, height: 48 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].physiotherapy}</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.DentalTreatment)}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/dental_treatment.png')} style={{ width: 50, height: 50 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].dentalTreatment}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.Notes)}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/notes.png')} style={{ width: 43, height: 47 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].notes}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('Covid19Form', { language, patient, visitId, userName })}>
-          <View style={styles.actionIcon}>
-            <Image source={require('../images/covid.png')} style={{ width: 43, height: 47 }} />
-          </View>
-          <Text style={styles.actionText}>{LocalizedStrings[language].covidScreening}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
