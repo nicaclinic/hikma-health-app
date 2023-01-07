@@ -22,9 +22,7 @@ export const UltrasoundConsultationDisplay = (metadataObj, language) => {
       <Text>{LocalizedStrings[language].date}: {metadataObj.date}</Text>
       <Text>{LocalizedStrings[language].names}: {metadataObj.names}</Text>
       <Text>{LocalizedStrings[language].surname}: {metadataObj.surname}</Text>
-      <Text>{LocalizedStrings[language].age}: {metadataObj.age}</Text>
       <Text>{LocalizedStrings[language].id}: {metadataObj.id}</Text>
-      <Text>{LocalizedStrings[language].dob}: {metadataObj.dob}</Text>
       <Text>{LocalizedStrings[language].origin}: {metadataObj.origin}</Text>
       <Text>{LocalizedStrings[language].ultrasoundPerformed}: {metadataObj.ultrasoundPerformed}</Text>
       <Text>{LocalizedStrings[language].resource}: {metadataObj.resource}</Text>
@@ -37,8 +35,6 @@ const UltrasoundConsultation = (props) => {
   const [names, setNames] = useState(null);
   const [surname, setSurname] = useState(null);
   const [id, setId] = useState(null);
-  const [dob, setDob] = useState(null);
-  const [age, setAge] = useState(null);
   const [origin, setOrigin] = useState(null);
   const [ultrasoundPerformed, setUltrasoundPerformed] = useState(null);
   const [resource, setResource] = useState(null);
@@ -61,8 +57,6 @@ const UltrasoundConsultation = (props) => {
         names,
         surname,
         id,
-        dob,
-        age,
         origin,
         ultrasoundPerformed,
         resource,
@@ -142,39 +136,6 @@ const UltrasoundConsultation = (props) => {
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].dob}</Text>
-        </View>
-        <View style={styles.inputRow}>
-          <DatePicker
-            style={styles.datePicker}
-            date={dob}
-            mode="date"
-            placeholder={LocalizedStrings[language].selectDob}
-            format="YYYY-MM-DD"
-            minDate="1900-05-01"
-            maxDate={today.toISOString().split('T')[0]}
-            confirmBtnText={LocalizedStrings[language].confirm}
-            cancelBtnText={LocalizedStrings[language].cancel}
-            customStyles={{
-              dateInput: {
-                alignItems: 'flex-start',
-                borderWidth: 0
-              }
-            }}
-            androidMode='spinner'
-            onDateChange={(date) => setDob(date)}
-          />
-        </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].age}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setAge(text)}
-            value={age}
-          />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].origin}</Text>

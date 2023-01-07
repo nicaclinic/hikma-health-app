@@ -39,30 +39,12 @@ export const Objective = (value, action, language) => {
   )
 }
 
-export const Sex = (value, action, language) => {
-  return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label={LocalizedStrings[language].sex} />
-      <Picker.Item value={LocalizedStrings[language].male} label={LocalizedStrings[language].male} />
-      <Picker.Item value={LocalizedStrings[language].female} label={LocalizedStrings[language].female} />
-    </Picker>
-  )
-}
-
 export const SubsequentEvolutionNoteDisplay = (metadataObj, language) => {
   return (
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
-      <Text>{LocalizedStrings[language].medicalRecord}: {metadataObj.medicalRecord}</Text>
       <Text>{LocalizedStrings[language].nameSurname}: {metadataObj.nameSurname}</Text>
       <Text>{LocalizedStrings[language].id}: {metadataObj.id}</Text>
-      <Text>{LocalizedStrings[language].dob}: {metadataObj.dob}</Text>
-      <Text>{LocalizedStrings[language].age}: {metadataObj.age}</Text>
-      <Text>{LocalizedStrings[language].sex}: {metadataObj.sex}</Text>
       <Text>{LocalizedStrings[language].community}: {metadataObj.community}</Text>
       <Text>{LocalizedStrings[language].proceedings}: {metadataObj.proceedings}</Text>
       <Text>{LocalizedStrings[language].dateTime}: {metadataObj.dateTime}</Text>
@@ -88,12 +70,8 @@ export const SubsequentEvolutionNoteDisplay = (metadataObj, language) => {
 }
 
 const SubsequentEvolutionNote = (props) => {
-  const [medicalRecord, setMedicalRecord] = useState(null);
   const [nameSurname, setNameSurname] = useState(null);
   const [id, setId] = useState(null);
-  const [dob, setDob] = useState(null);
-  const [age, setAge] = useState(null);
-  const [sex, setSex] = useState(null);
   const [community, setCommunity] = useState(null);
   const [proceedings, setProceedings] = useState(null);
   const [dateTime, setDateTime] = useState(null);
@@ -129,11 +107,7 @@ const SubsequentEvolutionNote = (props) => {
       event_type: EventTypes.SubsequentEvolutionNote,
       event_metadata: JSON.stringify({
         doctor: userName,
-        medicalRecord,
         nameSurname,id,
-        dob,
-        age,
-        sex,
         community,
         proceedings,
         dateTime,
@@ -169,18 +143,6 @@ const SubsequentEvolutionNote = (props) => {
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].subsequentEvolutionNote}</Text>
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].medicalRecord}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setMedicalRecord(text)}
-            value={medicalRecord}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].nameSurname}</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
@@ -204,43 +166,6 @@ const SubsequentEvolutionNote = (props) => {
             value={id}
           />
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].dob}</Text>
-        </View>
-        <View style={styles.inputRow}>
-          <DatePicker
-            style={styles.datePicker}
-            date={dob}
-            mode="date"
-            placeholder={LocalizedStrings[language].selectDob}
-            format="YYYY-MM-DD"
-            minDate="1900-05-01"
-            maxDate={today.toISOString().split('T')[0]}
-            confirmBtnText={LocalizedStrings[language].confirm}
-            cancelBtnText={LocalizedStrings[language].cancel}
-            customStyles={{
-              dateInput: {
-                alignItems: 'flex-start',
-                borderWidth: 0
-              }
-            }}
-            androidMode='spinner'
-            onDateChange={(date) => setDob(date)}
-          />
-        </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].age}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setAge(text)}
-            value={age}
-          />
-        </View>
-        {Sex(sex, setSex, language)}
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].community}</Text>
         </View>

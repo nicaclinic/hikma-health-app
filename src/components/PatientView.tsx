@@ -100,9 +100,27 @@ const PatientView = (props) => {
                 </View>
               </View>
               <View style={{ flex: 1 }}>
+                <Text>{`${LocalizedStrings[language].medicalRecordNum}:  ${patient.medical_record_num}`}</Text>
                 <Text>{`${LocalizedStrings[language].dob}:  ${patient.date_of_birth}`}</Text>
                 <Text>{`${LocalizedStrings[language].sex}:  ${patient.sex}`}</Text>
-                <Text>{`${LocalizedStrings[language].camp}:  ${patient.camp}`}</Text>
+                {!!patient.attention_datetime ? <Text>{LocalizedStrings[language].attentionDateTime}: {patient.attention_datetime}</Text> : null}
+                {!!patient.attending_resources ? <Text>{LocalizedStrings[language].resourceThatAttends}: {patient.attending_resources}</Text> : null}
+                {!!patient.origin ? <Text>{LocalizedStrings[language].origin}: {patient.origin}</Text> : null}
+                {!!patient.email ? <Text>{LocalizedStrings[language].email}: {patient.email}</Text> : null}
+                {!!patient.educational_status ? <Text>{LocalizedStrings[language].educationalStatus}: {patient.educational_status}</Text> : null}
+                {!!patient.religion ? <Text>{LocalizedStrings[language].religion}: {patient.religion}</Text> : null}
+                {!!patient.marital_status ? <Text>{LocalizedStrings[language].maritalStatus}: {patient.marital_status}</Text> : null}
+                {!!patient.occupation ? <Text>{LocalizedStrings[language].occupation}: {patient.occupation}</Text> : null}
+
+                {!!patient.mother_name ? <Text>{LocalizedStrings[language].motherName}: {patient.mother_name}</Text> : null}
+                {!!patient.father_name ? <Text>{LocalizedStrings[language].fatherName}: {patient.father_name}</Text> : null}
+                {!!patient.delivery_place ? <Text>{LocalizedStrings[language].deliveryPlace}: {patient.delivery_place}</Text> : null}
+                {!!patient.delivery_datetime ? <Text>{LocalizedStrings[language].deliveryDateTime}: {patient.delivery_datetime}</Text> : null}
+                {!!patient.gestational_age ? <Text>{LocalizedStrings[language].gestationalAge}: {patient.gestational_age}</Text> : null}
+                {!!patient.delivery_care ? <Text>{LocalizedStrings[language].deliveryCare}: {patient.delivery_care}</Text> : null}
+                {!!patient.delivery_via ? <Text>{LocalizedStrings[language].via}: {patient.delivery_via}</Text> : null}
+                {!!patient.presentation ? <Text>{LocalizedStrings[language].presentation}: {patient.presentation}</Text> : null}
+                {!!patient.birthing_events ? <Text>{LocalizedStrings[language].birthing_events}: {patient.birthing_events}</Text> : null}
               </View>
 
               <View style={{ flex: 1, marginBottom: 15 }}>

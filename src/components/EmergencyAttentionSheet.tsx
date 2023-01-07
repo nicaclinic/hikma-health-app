@@ -113,7 +113,6 @@ export const EmergencyAttentionSheetDisplay = (metadataObj, language) => {
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
       <Text>{LocalizedStrings[language].dateTime}: {metadataObj.dateTime}</Text>
-      <Text>{LocalizedStrings[language].medicalRecord}: {metadataObj.medicalRecord}</Text>
       <Text>{LocalizedStrings[language].names}: {metadataObj.names}</Text>
       <Text>{LocalizedStrings[language].surnames}: {metadataObj.surnames}</Text>
       <Text>{LocalizedStrings[language].occupation}: {metadataObj.occupation}</Text>
@@ -152,7 +151,6 @@ export const EmergencyAttentionSheetDisplay = (metadataObj, language) => {
 
 const EmergencyAttentionSheet = (props) => {
   const [dateTime, setDateTime] = useState(null);
-  const [medicalRecord, setMedicalRecord] = useState(null);
   const [names, setNames] = useState(null);
   const [surnames, setSurnames] = useState(null);
   const [occupation, setOccupation] = useState(null);
@@ -204,7 +202,6 @@ const EmergencyAttentionSheet = (props) => {
       event_metadata: JSON.stringify({
         doctor: userName,
         dateTime,
-        medicalRecord,
         names,
         surnames,
         occupation,
@@ -279,18 +276,6 @@ const EmergencyAttentionSheet = (props) => {
             }}
             androidMode='spinner'
             onDateChange={(date) => setDateTime(date)}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].medicalRecord}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setMedicalRecord(text)}
-            value={medicalRecord}
           />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>

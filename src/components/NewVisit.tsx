@@ -252,9 +252,6 @@ const NewVisit = (props) => {
         </View>
 
 
-        <Text> All </Text>
-
-
         
 
         {/* <View style={styles.gridContainer}>

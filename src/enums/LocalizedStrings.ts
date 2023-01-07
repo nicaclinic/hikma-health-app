@@ -125,6 +125,7 @@ export const LocalizedStrings = {
     sync: "Sync",
     adult: "Adult",
     pediatric: "Pediatric",
+    
     // PathologicalHistory
     pathologicalHistory: "Adult Pathological personal history",
     childhoodDiseases: "Infectious diseases of childhood",

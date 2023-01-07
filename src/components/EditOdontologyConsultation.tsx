@@ -19,8 +19,6 @@ const EditOdontologyConsultation = (props) => {
   const [names, setNames] = useState(null);
   const [surname, setSurname] = useState(null);
   const [id, setId] = useState(null);
-  const [dob, setDob] = useState(null);
-  const [age, setAge] = useState(null);
   const [origin, setOrigin] = useState(null);
   const [procedurePerformed, setProcedurePerformed] = useState(null);
   const [indications, setIndications] = useState(null);
@@ -34,8 +32,6 @@ const EditOdontologyConsultation = (props) => {
       setDate(metadataObj.date)
       setNames(metadataObj.names)
       setSurname(metadataObj.surname)
-      setDob(metadataObj.dob)
-      setAge(metadataObj.age)
       setId(metadataObj.id)
       setOrigin(metadataObj.origin)
       setProcedurePerformed(metadataObj.ultrasoundConsultation)
@@ -54,8 +50,6 @@ const EditOdontologyConsultation = (props) => {
         names,
         surname,
         id,
-        dob,
-        age,
         origin,
         procedurePerformed,
         indications,
@@ -130,42 +124,6 @@ const EditOdontologyConsultation = (props) => {
             style={styles.inputs}
             onChangeText={(text) => setId(text)}
             value={id}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].dob}</Text>
-        </View>
-        <View style={styles.inputRow}>
-          <DatePicker
-            style={styles.datePicker}
-            date={dob}
-            mode="date"
-            placeholder={LocalizedStrings[language].selectDob}
-            format="YYYY-MM-DD"
-            minDate="1900-05-01"
-            maxDate={today.toISOString().split('T')[0]}
-            confirmBtnText={LocalizedStrings[language].confirm}
-            cancelBtnText={LocalizedStrings[language].cancel}
-            customStyles={{
-              dateInput: {
-                alignItems: 'flex-start',
-                borderWidth: 0
-              }
-            }}
-            androidMode='spinner'
-            onDateChange={(date) => setDob(date)}
-          />
-        </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].age}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setAge(text)}
-            value={age}
           />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>

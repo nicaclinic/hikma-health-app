@@ -16,7 +16,6 @@ const EditEmergencyAttentionSheet = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [dateTime, setDateTime] = useState(null);
-  const [medicalRecord, setMedicalRecord] = useState(null);
   const [names, setNames] = useState(null);
   const [surnames, setSurnames] = useState(null);
   const [occupation, setOccupation] = useState(null);
@@ -60,7 +59,6 @@ const EditEmergencyAttentionSheet = (props) => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
       setDateTime(metadataObj.dateTime)
-      setMedicalRecord(metadataObj.medicalRecord)
       setNames(metadataObj.names)
       setSurnames(metadataObj.surnames)
       setOccupation(metadataObj.occupation)
@@ -106,7 +104,6 @@ const EditEmergencyAttentionSheet = (props) => {
       JSON.stringify({
         doctor: userName,
         dateTime,
-        medicalRecord,
         names,
         surnames,
         occupation,
@@ -179,18 +176,6 @@ const EditEmergencyAttentionSheet = (props) => {
             }}
             androidMode='spinner'
             onDateChange={(date) => setDateTime(date)}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].medicalRecord}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setMedicalRecord(text)}
-            value={medicalRecord}
           />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
