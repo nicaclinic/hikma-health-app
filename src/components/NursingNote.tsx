@@ -53,7 +53,8 @@ const NursingNote = (props) => {
       event_type: EventTypes.NursingNote,
       event_metadata: JSON.stringify({
         doctor: userName,
-        nameSurname,id,
+        nameSurname,
+        id,
         community,
         proceedings,
         dateTime,

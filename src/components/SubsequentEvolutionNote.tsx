@@ -107,7 +107,8 @@ const SubsequentEvolutionNote = (props) => {
       event_type: EventTypes.SubsequentEvolutionNote,
       event_metadata: JSON.stringify({
         doctor: userName,
-        nameSurname,id,
+        nameSurname,
+        id,
         community,
         proceedings,
         dateTime,

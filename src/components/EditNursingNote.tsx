@@ -12,20 +12,6 @@ import DatePicker from 'react-native-datepicker';
 
 const today = new Date();
 
-export const Sex = (value, action, language) => {
-  return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label={LocalizedStrings[language].sex} />
-      <Picker.Item value={LocalizedStrings[language].male} label={LocalizedStrings[language].male} />
-      <Picker.Item value={LocalizedStrings[language].female} label={LocalizedStrings[language].female} />
-    </Picker>
-  )
-}
-
 const EditNursingNote = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');

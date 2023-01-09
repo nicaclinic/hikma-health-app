@@ -15,7 +15,7 @@ const Login = (props) => {
   const [email, setEmail] = useState('sarah@shyp.studio');
   const [password, setPassword] = useState('password123');
   const [instanceList, setInstanceList] = useState([]);
-  const [selectedInstance, setSelectedInstance] = useState({ name: 'local', url: 'https://mmc-dppo-api.setout.academy' });
+  const [selectedInstance, setSelectedInstance] = useState({ name: 'local', url: 'https://nica-clinic-api.setout.academy/' });
   const [showInstanceDropdown, setShowInstanceDropdown] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
