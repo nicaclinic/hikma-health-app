@@ -58,7 +58,7 @@ const Immunizations = (props) => {
   const [dtDose2, setDtDose2] = useState(null);
   const [dtReinforcement, setDtReinforcement] = useState(null);
   const [dtReinforcementDoses, setDtReinforcementDoses] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

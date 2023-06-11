@@ -13,7 +13,7 @@ import Header from "./shared/Header";
 const PatientView = (props) => {
 
   const [patient, setPatient] = useState(props.navigation.getParam('patient'));
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [isEditingSummary, setIsEditingSummary] = useState(false);
   const [userName, setUserName] = useState('');
   const [summary, setSummary] = useState(LocalizedStrings[(props.navigation.getParam('language', 'en'))].noContent)
@@ -274,6 +274,13 @@ const PatientView = (props) => {
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.PhysicalExploration, language: language, patient: patient })}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>{LocalizedStrings[language].physicalExploration}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.AdultImmunizations, language: language, patient: patient })}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={styles.gridItemText}>{LocalizedStrings[language].adultImmunizations}</Text>
             </View>
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>

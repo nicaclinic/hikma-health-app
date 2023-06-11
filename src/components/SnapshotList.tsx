@@ -25,6 +25,7 @@ import { NursingNoteDisplay } from "./NursingNote";
 import { UltrasoundConsultationDisplay } from "./UltrasoundConsultation";
 import { LaboratoryConsultationDisplay } from "./LaboratoryConsultation";
 import { OdontologyConsultationDisplay } from "./OdontologyConsultation";
+import { AdultImmunizationsDisplay } from "./AdultImmunizations";
 
 
 import Header from "./shared/Header";
@@ -32,7 +33,7 @@ import Header from "./shared/Header";
 const SnapshotList = (props) => {
   const patient = props.navigation.getParam('patient');
   const eventType = props.navigation.getParam('eventType');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const [list, setList] = useState(props.navigation.getParam('events', []));
 
@@ -137,6 +138,10 @@ const SnapshotList = (props) => {
       case EventTypes.NursingNote:
         eventTypeText = LocalizedStrings[language].nursingNote
         display = NursingNoteDisplay(metadataObj, language)
+        break
+      case EventTypes.AdultImmunizations:
+        eventTypeText = LocalizedStrings[language].adultImmunizations
+        display = AdultImmunizationsDisplay(metadataObj, language)
         break
       case EventTypes.UltrasoundConsultation:
         eventTypeText = LocalizedStrings[language].ultrasoundConsultation

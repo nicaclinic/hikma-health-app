@@ -11,7 +11,7 @@ import Header from './shared/Header';
 const EditMedicalHistory = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const [allergies, setAllergies] = useState(null);
   const [surgeryHx, setSurgeryHx] = useState(null);

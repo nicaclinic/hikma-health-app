@@ -112,7 +112,7 @@ export const Presentation = (value, action, language) => {
 const EditPatient = (props) => {
   const patient = props.navigation.getParam('patient');
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [givenNameText, setGivenNameText] = useState(!!props.navigation.state.params.patient.given_name ? props.navigation.state.params.patient.given_name.content[language] : '');
   const [surnameText, setSurnameText] = useState(!!props.navigation.state.params.patient.surname ? props.navigation.state.params.patient.surname.content[language] : '');
   const [dob, setDob] = useState(props.navigation.state.params.patient.date_of_birth == 'None' ? '' : props.navigation.state.params.patient.date_of_birth);
@@ -121,11 +121,13 @@ const EditPatient = (props) => {
   const [hometownText, setHometownText] = useState(!!props.navigation.state.params.patient.hometown ? props.navigation.state.params.patient.hometown.content[language] : '');
   const [phone, setPhone] = useState(props.navigation.state.params.patient.phone || '');
   const [camp, setCamp] = useState('');
-  const [medicalRecordNum, setMedicalRecordNum] = useState('');
+  const [medicalRecordNum, setMedicalRecordNum] = useState(props.navigation.state.params.patient.medical_record_num || '');
   const [attentionDateTime, setAttentionDateTime] = useState(props.navigation.state.params.patient.attention_datetime || '');
   const [resourceThatAttends, setResourceThatAttends] = useState(props.navigation.state.params.patient.attending_resources || '');
   const [origin, setOrigin] = useState(props.navigation.state.params.patient.origin || '');
   const [age, setAge] = useState(props.navigation.state.params.patient.age || '');
+  const [localId, setLocalId] = useState(props.navigation.state.params.patient.localId || '');
+  const [address, setAddress] = useState(props.navigation.state.params.patient.address || '');
   const [email, setEmail] = useState(props.navigation.state.params.patient.email || '');
   const [educationalStatus, setEducationalStatus] = useState(props.navigation.state.params.patient.educational_status || '');
   const [religion, setReligion] = useState(props.navigation.state.params.patient.religion || '');
@@ -221,11 +223,13 @@ const EditPatient = (props) => {
       phone: phone,
       sex: male ? 'M' : 'F',
 
-      medical_record_num: patient.id,
+      medical_record_num: medicalRecordNum,
       attention_datetime: attentionDateTime,
       attending_resources: resourceThatAttends,
       origin: origin,
       age: age,
+      local_id: localId,
+      address: address,
       email: email,
       educational_status: educationalStatus,
       religion: religion,
@@ -283,7 +287,7 @@ const EditPatient = (props) => {
             style={styles.inputs}
             placeholder={LocalizedStrings[language].medicalRecordNum}
             onChangeText={(text) => setMedicalRecordNum(text)}
-            value={patient.id}
+            value={medicalRecordNum}
             editable = {false}
           />
         </View>
@@ -395,6 +399,28 @@ const EditPatient = (props) => {
               editable = {false}
             />
           </View>
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].localId}</Text>
+        </View>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.inputs}
+            placeholder={LocalizedStrings[language].localId}
+            onChangeText={(text) => setLocalId(text)}
+            value={localId}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].address}</Text>
+        </View>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.inputs}
+            placeholder={LocalizedStrings[language].address}
+            onChangeText={(text) => setAddress(text)}
+            value={address}
+          />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].phone}</Text>

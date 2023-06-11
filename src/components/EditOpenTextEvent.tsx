@@ -11,7 +11,7 @@ import Header from './shared/Header';
 const EditOpenTextEvent = (props) => {
 
   const event = props.navigation.getParam('event');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [responseText, setResponseText] = useState(props.navigation.getParam('event').event_metadata);
 
   const editEvent = async () => {

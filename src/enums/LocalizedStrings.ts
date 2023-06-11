@@ -331,6 +331,15 @@ export const LocalizedStrings = {
     ablactation: "Ablactation",
 
     // Immunizations
+    adultImmunizations: "Adult Immunizations",
+    pneumococcus: "Pneumococcus",
+    influenza: "Influenza",
+    tetanus: "Tetanus",
+    hepatitisB: "Hepatitis B",
+    covid: "COVID",
+    tb: "TB",
+
+    // Immunizations
     immunizations: "Immunizations",
     vaccines: "Vaccines",
     bcg: "BCG",
@@ -466,6 +475,7 @@ export const LocalizedStrings = {
     technical: "Technical",
     knowsReadWrite: "knows how to read and write",
     illiterate: "illiterate",
+    localId: "Local ID",
 
     religion: "Religion",
     catholic: "catholic",
@@ -653,6 +663,9 @@ export const LocalizedStrings = {
     advancedFilters: "Filtros Avanzados ▼",
     hideFilters: "Ocultar Filtros",
     clearFilters: "Restablecer Filtros",
+    newPatient: "Nuevo Paciente",
+    newVisit: "Nueva Visita",
+    newEntry: "Nueva Entrada",
     camp: "Nombre del campo de refugiados",
     vitals: "Signos vitales",
     examination: "Examen físico",
@@ -744,6 +757,7 @@ export const LocalizedStrings = {
     sync: "Sync",
     adult: "Adulto",
     pediatric: "Pediátrica",
+
     // PathologicalHistory
     pathologicalHistory: "Adulto Antecedentes Personales Patológicos",
     childhoodDiseases: "Enfermedades infecciosas de la infancia",
@@ -948,6 +962,15 @@ export const LocalizedStrings = {
     mixedBreastfeedingDuration: "Duración de lactancia mixta",
     ablactation: "Ablactación",
 
+    // Adult Immunizations
+    adultImmunizations: "Inmunizaciones adultos",
+    pneumococcus: "Pneumococcus",
+    influenza: "Influenza",
+    tetanus: "Tetanus",
+    hepatitisB: "Hepatitis B",
+    covid: "COVID",
+    tb: "TB",
+
     // Inmunizaciones
     immunizations: "Inmunizaciones",
     vaccines: "Vacunas",
@@ -1082,6 +1105,7 @@ export const LocalizedStrings = {
     technical: "Técnico",
     knowsReadWrite: "Sabe leer y escribir",
     illiterate: "Analfabeta",
+    localId: "ID Local",
 
     religion: "Religión",
     catholic: "Católica",

@@ -113,12 +113,6 @@ export const EmergencyAttentionSheetDisplay = (metadataObj, language) => {
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
       <Text>{LocalizedStrings[language].dateTime}: {metadataObj.dateTime}</Text>
-      <Text>{LocalizedStrings[language].names}: {metadataObj.names}</Text>
-      <Text>{LocalizedStrings[language].surnames}: {metadataObj.surnames}</Text>
-      <Text>{LocalizedStrings[language].occupation}: {metadataObj.occupation}</Text>
-      <Text>{LocalizedStrings[language].address}: {metadataObj.address}</Text>
-      <Text>{LocalizedStrings[language].phoneNumber}: {metadataObj.phoneNumber}</Text>
-      <Text>{LocalizedStrings[language].id}: {metadataObj.id}</Text>
       <Text>{LocalizedStrings[language].arrivesIn}: {metadataObj.arrivesIn}</Text>
       <Text>{LocalizedStrings[language].accidentCauses}: {metadataObj.accidentCauses}</Text>
       <Text>{LocalizedStrings[language].accidentPlace}: {metadataObj.accidentPlace}</Text>
@@ -151,12 +145,6 @@ export const EmergencyAttentionSheetDisplay = (metadataObj, language) => {
 
 const EmergencyAttentionSheet = (props) => {
   const [dateTime, setDateTime] = useState(null);
-  const [names, setNames] = useState(null);
-  const [surnames, setSurnames] = useState(null);
-  const [occupation, setOccupation] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [id, setId] = useState(null);
   const [arrivesIn, setArrivesIn] = useState(null);
   const [accidentCauses, setAccidentCauses] = useState(null);
   const [accidentPlace, setAccidentPlace] = useState(null);
@@ -187,7 +175,7 @@ const EmergencyAttentionSheet = (props) => {
   const [destiny, setDestiny] = useState(null);
   const [emergencyType, setEmergencyType] = useState(null);
   const [treatingPhysicianSignature, setTreatingPhysicianSignature] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -202,12 +190,6 @@ const EmergencyAttentionSheet = (props) => {
       event_metadata: JSON.stringify({
         doctor: userName,
         dateTime,
-        names,
-        surnames,
-        occupation,
-        address,
-        phoneNumber,
-        id,
         arrivesIn,
         accidentCauses,
         accidentPlace,
@@ -276,78 +258,6 @@ const EmergencyAttentionSheet = (props) => {
             }}
             androidMode='spinner'
             onDateChange={(date) => setDateTime(date)}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].names}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNames(text)}
-            value={names}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].surnames}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setSurnames(text)}
-            value={surnames}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].occupation}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setOccupation(text)}
-            value={occupation}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].address}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setAddress(text)}
-            value={address}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].phoneNumber}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setPhoneNumber(text)}
-            value={phoneNumber}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
           />
         </View>
         {ArrivesIn(arrivesIn, setArrivesIn, language)}

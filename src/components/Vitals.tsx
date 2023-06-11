@@ -35,7 +35,7 @@ const Vitals = (props) => {
   const [respiratoryRate, setRespiratoryRate] = useState(null);
   const [weight, setWeight] = useState(null);
   const [bloodGlucose, setBloodGlucose] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

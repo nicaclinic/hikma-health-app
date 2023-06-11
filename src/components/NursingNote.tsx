@@ -19,8 +19,6 @@ export const NursingNoteDisplay = (metadataObj, language) => {
   return (
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
-      <Text>{LocalizedStrings[language].nameSurname}: {metadataObj.nameSurname}</Text>
-      <Text>{LocalizedStrings[language].id}: {metadataObj.id}</Text>
       <Text>{LocalizedStrings[language].community}: {metadataObj.community}</Text>
       <Text>{LocalizedStrings[language].proceedings}: {metadataObj.proceedings}</Text>
       <Text>{LocalizedStrings[language].dateTime}: {metadataObj.dateTime}</Text>
@@ -31,15 +29,13 @@ export const NursingNoteDisplay = (metadataObj, language) => {
 }
 
 const NursingNote = (props) => {
-  const [nameSurname, setNameSurname] = useState(null);
-  const [id, setId] = useState(null);
   const [community, setCommunity] = useState(null);
   const [proceedings, setProceedings] = useState(null);
   const [dateTime, setDateTime] = useState(null);
   const [note, setNote] = useState(null);
   const [nurseName, setNurseName] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -53,8 +49,6 @@ const NursingNote = (props) => {
       event_type: EventTypes.NursingNote,
       event_metadata: JSON.stringify({
         doctor: userName,
-        nameSurname,
-        id,
         community,
         proceedings,
         dateTime,
@@ -73,30 +67,6 @@ const NursingNote = (props) => {
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].nursingNote}</Text>
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].nameSurname}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNameSurname(text)}
-            value={nameSurname}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
-          />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].community}</Text>

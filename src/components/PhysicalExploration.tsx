@@ -8,9 +8,7 @@ import { v4 as uuid } from 'uuid';
 import styles from './Style';
 import { EventTypes } from '../enums/EventTypes';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
-import radioButtons from './shared/RadioButtons';
 import Header from './shared/Header';
-import { formatTextDisplay, formatBooleanDisplay } from './shared/EventFieldDisplay';
 
 export const Objective = (value, action, language) => {
   return (
@@ -50,7 +48,19 @@ export const PhysicalExplorationDisplay = (metadataObj, language) => {
       <Text>{LocalizedStrings[language].bodyMassIndex}: {metadataObj.bodyMassIndex}</Text>
       <Text>{LocalizedStrings[language].consultationReason}: {metadataObj.consultationReason}</Text>
       <Text>{LocalizedStrings[language].illnessHistory}: {metadataObj.illnessHistory}</Text>
-      <Text>{LocalizedStrings[language].objective}: {metadataObj.objective}</Text>
+      <Text style={[{ fontWeight: 'bold' }]} >{LocalizedStrings[language].objective}:</Text>
+      <Text>{LocalizedStrings[language].head}: {metadataObj.head}</Text>
+      <Text>{LocalizedStrings[language].eyes}: {metadataObj.eyes}</Text>
+      <Text>{LocalizedStrings[language].earsNoseMouth}: {metadataObj.earsNoseMouth}</Text>
+      <Text>{LocalizedStrings[language].neck}: {metadataObj.neck}</Text>
+      <Text>{LocalizedStrings[language].chest}: {metadataObj.chest}</Text>
+      <Text>{LocalizedStrings[language].heart}: {metadataObj.heart}</Text>
+      <Text>{LocalizedStrings[language].lungFields}: {metadataObj.lungFields}</Text>
+      <Text>{LocalizedStrings[language].abdomen}: {metadataObj.abdomen}</Text>
+      <Text>{LocalizedStrings[language].genitals}: {metadataObj.genitals}</Text>
+      <Text>{LocalizedStrings[language].skeletalMuscle}: {metadataObj.skeletalMuscle}</Text>
+      <Text>{LocalizedStrings[language].extremities}: {metadataObj.extremities}</Text>
+      <Text>{LocalizedStrings[language].neurological}: {metadataObj.neurological}</Text>
       <Text>{LocalizedStrings[language].evaluation}: {metadataObj.evaluation}</Text>
       <Text>{LocalizedStrings[language].diagnosis}: {metadataObj.diagnosis}</Text>
       <Text>{LocalizedStrings[language].feeding}: {metadataObj.feeding}</Text>
@@ -73,7 +83,18 @@ const PhysicalExploration = (props) => {
   const [bodyMassIndex, setBodyMassIndex] = useState(null);
   const [consultationReason, setConsultationReason] = useState(null);
   const [illnessHistory, setIllnessHistory] = useState(null);
-  const [objective, setObjective] = useState(null);
+  const [head, setHead] = useState(null);
+  const [eyes, setEyes] = useState(null);
+  const [earsNoseMouth, setEarsNoseMouth] = useState(null);
+  const [neck, setNeck] = useState(null);
+  const [chest, setChest] = useState(null);
+  const [heart, setHeart] = useState(null);
+  const [lungFields, setLungFields] = useState(null);
+  const [abdomen, setAbdomen] = useState(null);
+  const [genitals, setGenitals] = useState(null);
+  const [skeletalMuscle, setSkeletalMuscle] = useState(null);
+  const [extremities, setExtremities] = useState(null);
+  const [neurological, setNeurological] = useState(null);
   const [evaluation, setEvaluation] = useState(null);
   const [diagnosis, setDiagnosis] = useState(null);
   const [feeding, setFeeding] = useState(null);
@@ -82,7 +103,7 @@ const PhysicalExploration = (props) => {
   const [normsOrRecommendations, setNormsOrRecommendations] = useState(null);
   const [treatingPhysician, setTreatingPhysician] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -106,7 +127,18 @@ const PhysicalExploration = (props) => {
         bodyMassIndex,
         consultationReason,
         illnessHistory,
-        objective,
+        head,
+        eyes,
+        earsNoseMouth,
+        neck,
+        chest,
+        heart,
+        lungFields,
+        abdomen,
+        genitals,
+        skeletalMuscle,
+        extremities,
+        neurological,
         evaluation,
         diagnosis,
         feeding,
@@ -222,7 +254,153 @@ const PhysicalExploration = (props) => {
             value={illnessHistory}
           />
         </View>
-        {Objective(objective, setObjective, language)}
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF', fontWeight: 'bold' }}>{LocalizedStrings[language].objective}</Text>
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].head}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setHead(text)}
+            value={head}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].eyes}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setEyes(text)}
+            value={eyes}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].earsNoseMouth}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setEarsNoseMouth(text)}
+            value={earsNoseMouth}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].neck}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setNeck(text)}
+            value={neck}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].chest}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setChest(text)}
+            value={chest}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].heart}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setHeart(text)}
+            value={heart}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].lungFields}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setLungFields(text)}
+            value={lungFields}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].abdomen}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setAbdomen(text)}
+            value={abdomen}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].genitals}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setGenitals(text)}
+            value={genitals}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].skeletalMuscle}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setSkeletalMuscle(text)}
+            value={skeletalMuscle}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].extremities}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setExtremities(text)}
+            value={extremities}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].neurological}</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setNeurological(text)}
+            value={neurological}
+          />
+        </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].evaluation}</Text>
         </View>

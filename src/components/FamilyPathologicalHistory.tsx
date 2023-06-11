@@ -42,7 +42,7 @@ const FamilyPathologicalHistory = (props) => {
   const [mentalDiseases, setMentalDiseases] = useState(null);
   const [others, setOthers] = useState(null);
   const [specify, setSpecify] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -195,7 +195,7 @@ const FamilyPathologicalHistory = (props) => {
           <TextInput
             multiline={true}
             numberOfLines={10}
-            style={styles.inputs}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setOthers(text)}
             value={others}
           />

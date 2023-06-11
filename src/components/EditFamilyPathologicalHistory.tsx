@@ -24,7 +24,7 @@ const EditFamilyPathologicalHistory = (props) => {
   const [others, setOthers] = useState(null);
   const [specify, setSpecify] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
@@ -185,7 +185,7 @@ const EditFamilyPathologicalHistory = (props) => {
           <TextInput
             multiline={true}
             numberOfLines={10}
-            style={styles.inputs}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setOthers(text)}
             value={others}
           />

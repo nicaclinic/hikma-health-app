@@ -57,7 +57,7 @@ const EditPsychomotorDevelopment = (props) => {
   const [dressesAlone, setDressesAlone] = useState(null);
   const [complexOrders, setComplexOrders] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {

@@ -18,7 +18,7 @@ const EditFeeding = (props) => {
   const [mixedBreastfeedingDuration, setMixedBreastfeedingDuration] = useState(null);
   const [ablactation, setAblactation] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {

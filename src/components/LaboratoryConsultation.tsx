@@ -20,10 +20,6 @@ export const LaboratoryConsultationDisplay = (metadataObj, language) => {
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
       <Text>{LocalizedStrings[language].date}: {metadataObj.date}</Text>
-      <Text>{LocalizedStrings[language].names}: {metadataObj.names}</Text>
-      <Text>{LocalizedStrings[language].surname}: {metadataObj.surname}</Text>
-      <Text>{LocalizedStrings[language].id}: {metadataObj.id}</Text>
-      <Text>{LocalizedStrings[language].origin}: {metadataObj.origin}</Text>
       <Text>{LocalizedStrings[language].testPerformed}: {metadataObj.testPerformed}</Text>
       <Text>{LocalizedStrings[language].resource}: {metadataObj.resource}</Text>
       <Text>{LocalizedStrings[language].minsaCode}: {metadataObj.minsaCode}</Text>
@@ -32,14 +28,10 @@ export const LaboratoryConsultationDisplay = (metadataObj, language) => {
 
 const LaboratoryConsultation = (props) => {
   const [date, setDate] = useState(null);
-  const [names, setNames] = useState(null);
-  const [surname, setSurname] = useState(null);
-  const [id, setId] = useState(null);
-  const [origin, setOrigin] = useState(null);
   const [testPerformed, setTestPerformed] = useState(null);
   const [resource, setResource] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -54,10 +46,6 @@ const LaboratoryConsultation = (props) => {
       event_metadata: JSON.stringify({
         doctor: userName,
         date,
-        names,
-        surname,
-        id,
-        origin,
         testPerformed,
         resource,
         minsaCode
@@ -98,54 +86,6 @@ const LaboratoryConsultation = (props) => {
             onDateChange={(date) => setDate(date)}
           />
         </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].names}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNames(text)}
-            value={names}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].surname}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setSurname(text)}
-            value={surname}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].origin}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setOrigin(text)}
-            value={origin}
-          />
-        </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].testPerformed}</Text>
         </View>

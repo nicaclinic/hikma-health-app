@@ -39,8 +39,6 @@ export const Objective = (value, action, language) => {
 const EditSubsequentEvolutionNote = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
-  const [nameSurname, setNameSurname] = useState(null);
-  const [id, setId] = useState(null);
   const [community, setCommunity] = useState(null);
   const [proceedings, setProceedings] = useState(null);
   const [dateTime, setDateTime] = useState(null);
@@ -63,13 +61,11 @@ const EditSubsequentEvolutionNote = (props) => {
   const [treatingPhysician, setTreatingPhysician] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
-      setNameSurname(metadataObj.nameSurname)
-      setId(metadataObj.id)
       setCommunity(metadataObj.community)
       setProceedings(metadataObj.proceedings)
       setDateTime(metadataObj.dateTime)
@@ -98,7 +94,6 @@ const EditSubsequentEvolutionNote = (props) => {
       event.id,
       JSON.stringify({
         doctor: userName,
-        nameSurname,id,
         community,
         proceedings,
         dateTime,
@@ -130,30 +125,6 @@ const EditSubsequentEvolutionNote = (props) => {
         {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].subsequentEvolutionNote}</Text>
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].nameSurname}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNameSurname(text)}
-            value={nameSurname}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
-          />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].community}</Text>

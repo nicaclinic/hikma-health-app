@@ -21,7 +21,6 @@ export const PostnatalHistoryDisplay = (metadataObj, language) => {
       <Text>{LocalizedStrings[language].sizeInCentimeters}: {metadataObj.sizeInCentimeters}</Text>
       <Text>{LocalizedStrings[language].suffocation}: {formatBooleanDisplay(metadataObj.suffocation, language)}</Text>
       {!!metadataObj.suffocation ? <Text>{LocalizedStrings[language].specify}: {metadataObj.suffocationSpecify}</Text> : null}
-      <Text>{LocalizedStrings[language].suffocationSpecify}: {metadataObj.suffocationSpecify}</Text>
       <Text>{LocalizedStrings[language].roomingIn}: {metadataObj.roomingIn}</Text>
       <Text>{LocalizedStrings[language].hospitalization}: {metadataObj.hospitalization}</Text>
     </View>)
@@ -35,7 +34,7 @@ const PostnatalHistory = (props) => {
   const [suffocationSpecify, setSuffocationSpecify] = useState(null);
   const [roomingIn, setRoomingIn] = useState(null);
   const [hospitalization, setHospitalization] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

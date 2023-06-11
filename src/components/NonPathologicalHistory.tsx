@@ -50,7 +50,7 @@ const NonPathologicalHistory = (props) => {
   const [drugsAgeOfTermination, setDrugsAgeOfTermination] = useState(null);
   const [drugsFrequency, setDrugsFrequency] = useState(null);
   const [drugsType, setDrugsType] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

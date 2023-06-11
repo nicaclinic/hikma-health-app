@@ -12,16 +12,102 @@ import DatePicker from 'react-native-datepicker';
 
 const today = new Date();
 
+export const ArrivesIn = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label={LocalizedStrings[language].arrivesIn} />
+      <Picker.Item value={LocalizedStrings[language].ambulance} label={LocalizedStrings[language].ambulance} />
+      <Picker.Item value={LocalizedStrings[language].walking} label={LocalizedStrings[language].walking} />
+      <Picker.Item value={LocalizedStrings[language].particular} label={LocalizedStrings[language].particular} />
+      <Picker.Item value={LocalizedStrings[language].buses} label={LocalizedStrings[language].buses} />
+    </Picker>
+  )
+}
+
+export const AccidentCauses = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label={LocalizedStrings[language].accidentCauses} />
+      <Picker.Item value={LocalizedStrings[language].motorizedVehicle} label={LocalizedStrings[language].motorizedVehicle} />
+      <Picker.Item value={LocalizedStrings[language].naturalPhenomenon} label={LocalizedStrings[language].naturalPhenomenon} />
+      <Picker.Item value={LocalizedStrings[language].fireExplosion} label={LocalizedStrings[language].fireExplosion} />
+      <Picker.Item value={LocalizedStrings[language].drop} label={LocalizedStrings[language].drop} />
+      <Picker.Item value={LocalizedStrings[language].assaultBattery} label={LocalizedStrings[language].assaultBattery} />
+      <Picker.Item value={LocalizedStrings[language].lateEffects} label={LocalizedStrings[language].lateEffects} />
+      <Picker.Item value={LocalizedStrings[language].machinery} label={LocalizedStrings[language].machinery} />
+      <Picker.Item value={LocalizedStrings[language].suicideAttempt} label={LocalizedStrings[language].suicideAttempt} />
+      <Picker.Item value={LocalizedStrings[language].other} label={LocalizedStrings[language].other} />
+    </Picker>
+  )
+}
+
+export const AccidentPlace = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label={LocalizedStrings[language].accidentPlace} />
+      <Picker.Item value={LocalizedStrings[language].work} label={LocalizedStrings[language].work} />
+      <Picker.Item value={LocalizedStrings[language].sportFun} label={LocalizedStrings[language].sportFun} />
+      <Picker.Item value={LocalizedStrings[language].livingPlace} label={LocalizedStrings[language].livingPlace} />
+      <Picker.Item value={LocalizedStrings[language].publicRoad} label={LocalizedStrings[language].publicRoad} />
+      <Picker.Item value={LocalizedStrings[language].studyCenter} label={LocalizedStrings[language].studyCenter} />
+      <Picker.Item value={LocalizedStrings[language].other} label={LocalizedStrings[language].other} />
+    </Picker>
+  )
+}
+
+export const Destiny = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label={LocalizedStrings[language].destiny} />
+      <Picker.Item value={LocalizedStrings[language].ambulatory} label={LocalizedStrings[language].ambulatory} />
+      <Picker.Item value={LocalizedStrings[language].naturalPhenomenon} label={LocalizedStrings[language].naturalPhenomenon} />
+      <Picker.Item value={LocalizedStrings[language].fireExplosion} label={LocalizedStrings[language].fireExplosion} />
+      <Picker.Item value={LocalizedStrings[language].drop} label={LocalizedStrings[language].drop} />
+      <Picker.Item value={LocalizedStrings[language].assaultBattery} label={LocalizedStrings[language].assaultBattery} />
+      <Picker.Item value={LocalizedStrings[language].lateEffects} label={LocalizedStrings[language].lateEffects} />
+      <Picker.Item value={LocalizedStrings[language].machinery} label={LocalizedStrings[language].machinery} />
+      <Picker.Item value={LocalizedStrings[language].suicideAttempt} label={LocalizedStrings[language].suicideAttempt} />
+      <Picker.Item value={LocalizedStrings[language].other} label={LocalizedStrings[language].other} />
+    </Picker>
+  )
+}
+
+export const EmergencyType = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label={LocalizedStrings[language].emergencyType} />
+      <Picker.Item value={LocalizedStrings[language].medical} label={LocalizedStrings[language].medical} />
+      <Picker.Item value={LocalizedStrings[language].surgical} label={LocalizedStrings[language].surgical} />
+      <Picker.Item value={LocalizedStrings[language].obstetricGynecology} label={LocalizedStrings[language].obstetricGynecology} />
+      <Picker.Item value={LocalizedStrings[language].other} label={LocalizedStrings[language].other} />
+    </Picker>
+  )
+}
+
 const EditEmergencyAttentionSheet = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [dateTime, setDateTime] = useState(null);
-  const [names, setNames] = useState(null);
-  const [surnames, setSurnames] = useState(null);
-  const [occupation, setOccupation] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [id, setId] = useState(null);
   const [arrivesIn, setArrivesIn] = useState(null);
   const [accidentCauses, setAccidentCauses] = useState(null);
   const [accidentPlace, setAccidentPlace] = useState(null);
@@ -53,18 +139,12 @@ const EditEmergencyAttentionSheet = (props) => {
   const [emergencyType, setEmergencyType] = useState(null);
   const [treatingPhysicianSignature, setTreatingPhysicianSignature] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
       setDateTime(metadataObj.dateTime)
-      setNames(metadataObj.names)
-      setSurnames(metadataObj.surnames)
-      setOccupation(metadataObj.occupation)
-      setAddress(metadataObj.address)
-      setPhoneNumber(metadataObj.phoneNumber)
-      setId(metadataObj.id)
       setArrivesIn(metadataObj.arrivesIn)
       setAccidentCauses(metadataObj.accidentCauses)
       setAccidentPlace(metadataObj.accidentPlace)
@@ -104,12 +184,6 @@ const EditEmergencyAttentionSheet = (props) => {
       JSON.stringify({
         doctor: userName,
         dateTime,
-        names,
-        surnames,
-        occupation,
-        address,
-        phoneNumber,
-        id,
         arrivesIn,
         accidentCauses,
         accidentPlace,
@@ -176,78 +250,6 @@ const EditEmergencyAttentionSheet = (props) => {
             }}
             androidMode='spinner'
             onDateChange={(date) => setDateTime(date)}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].names}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNames(text)}
-            value={names}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].surnames}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setSurnames(text)}
-            value={surnames}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].occupation}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setOccupation(text)}
-            value={occupation}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].address}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setAddress(text)}
-            value={address}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].phoneNumber}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setPhoneNumber(text)}
-            value={phoneNumber}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
           />
         </View>
         {ArrivesIn(arrivesIn, setArrivesIn, language)}

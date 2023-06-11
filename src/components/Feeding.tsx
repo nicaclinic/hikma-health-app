@@ -30,7 +30,7 @@ const Feeding = (props) => {
   const [mixedBreastfeeding, setMixedBreastfeeding] = useState(null);
   const [mixedBreastfeedingDuration, setMixedBreastfeedingDuration] = useState(null);
   const [ablactation, setAblactation] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

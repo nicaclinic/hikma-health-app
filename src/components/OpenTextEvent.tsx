@@ -15,7 +15,7 @@ const OpenTextEvent = (props) => {
   const eventType = props.navigation.getParam('eventType');
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [textColor, setTextColor] = useState('#A9A9A9')
   const [responseText, setResponseText] = useState('');
 

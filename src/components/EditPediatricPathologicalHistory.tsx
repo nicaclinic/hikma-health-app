@@ -19,7 +19,7 @@ const EditPediatricPathologicalHistory = (props) => {
   const [hospitalizations, setHospitalizations] = useState(null);
   const [others, setOthers] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {

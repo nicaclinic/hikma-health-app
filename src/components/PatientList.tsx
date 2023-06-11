@@ -28,7 +28,7 @@ const PatientList = (props) => {
   const [maxAge, setMaxAge] = useState<number>(0);
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [searchIconFunction, setSearchIconFunction] = useState(false)
   const search = useRef(null);
 
@@ -133,6 +133,7 @@ const PatientList = (props) => {
               borderBottomWidth: 1,
             }}
           />
+          <Text>{`${LocalizedStrings[language].medicalRecordNum}:  ${item.medical_record_num}`}</Text>
           <Text style={{ flexWrap: 'wrap' }}>{`${LocalizedStrings[language].dob}:  ${item.date_of_birth}`}</Text>
           <Text>{`${LocalizedStrings[language].sex}:  ${item.sex}`}</Text>
         </View>

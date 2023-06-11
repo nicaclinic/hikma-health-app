@@ -36,7 +36,7 @@ const Physiotherapy = (props) => {
   const [recommendations, setRecommendations] = useState(null);
   const [referral, setReferral] = useState(null);
   const [referralText, setReferralText] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

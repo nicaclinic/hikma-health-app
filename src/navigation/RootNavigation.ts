@@ -60,6 +60,8 @@ import LaboratoryConsultation from '../components/LaboratoryConsultation';
 import EditLaboratoryConsultation from '../components/EditLaboratoryConsultation';
 import OdontologyConsultation from '../components/OdontologyConsultation';
 import EditOdontologyConsultation from '../components/EditOdontologyConsultation';
+import AdultImmunizations from '../components/AdultImmunizations';
+import EditAdultImmunizations from '../components/EditAdultImmunizations';
 
 const rootNavigator = createStackNavigator(
   {
@@ -403,6 +405,20 @@ const rootNavigator = createStackNavigator(
       screen: EditNursingNote,
       navigationOptions: () => ({
         title: `EditNursingNote`,
+        header: null
+      })
+    },
+    AdultImmunizations: {
+      screen: AdultImmunizations,
+      navigationOptions: () => ({
+        title: `AdultImmunizations`,
+        header: null
+      })
+    },
+    EditAdultImmunizations: {
+      screen: EditAdultImmunizations,
+      navigationOptions: () => ({
+        title: `EditAdultImmunizations`,
         header: null
       })
     },

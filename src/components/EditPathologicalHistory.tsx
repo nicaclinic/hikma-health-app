@@ -25,7 +25,7 @@ const EditPathologicalHistory = (props) => {
   const [others, setOthers] = useState(null);
   const [specify, setSpecify] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {

@@ -13,7 +13,7 @@ const EditMedicine = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [medication, setMedication] = useState(null);
   const [type, setType] = useState(null);
   const [dosage, setDosage] = useState(null);

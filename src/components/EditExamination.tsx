@@ -12,7 +12,7 @@ import Header from './shared/Header';
 const EditExamination = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   
   const [examination, setExamination] = useState(null);
   const [generalObservations, setGeneralObservations] = useState(null);

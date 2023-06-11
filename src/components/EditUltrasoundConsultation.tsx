@@ -16,23 +16,15 @@ const EditUltrasoundConsultation = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [date, setDate] = useState(null);
-  const [names, setNames] = useState(null);
-  const [surname, setSurname] = useState(null);
-  const [id, setId] = useState(null);
-  const [origin, setOrigin] = useState(null);
   const [ultrasoundPerformed, setUltrasoundPerformed] = useState(null);
   const [resource, setResource] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
       setDate(metadataObj.date)
-      setNames(metadataObj.names)
-      setSurname(metadataObj.surname)
-      setId(metadataObj.id)
-      setOrigin(metadataObj.origin)
       setUltrasoundPerformed(metadataObj.ultrasoundConsultation)
       setResource(metadataObj.resource)
       setMinsaCode(metadataObj.minsaCode)
@@ -45,10 +37,6 @@ const EditUltrasoundConsultation = (props) => {
       JSON.stringify({
         doctor: userName,
         date,
-        names,
-        surname,
-        id,
-        origin,
         ultrasoundPerformed,
         resource,
         minsaCode
@@ -61,7 +49,7 @@ const EditUltrasoundConsultation = (props) => {
       <View style={styles.containerLeft}>
         {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].UltrasoundConsultation}</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].ultrasoundConsultation}</Text>
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].date}</Text>
@@ -87,54 +75,6 @@ const EditUltrasoundConsultation = (props) => {
             onDateChange={(date) => setDate(date)}
           />
         </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].names}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNames(text)}
-            value={names}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].surname}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setSurname(text)}
-            value={surname}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].origin}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setOrigin(text)}
-            value={origin}
-          />
-        </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].ultrasoundPerformed}</Text>
         </View>

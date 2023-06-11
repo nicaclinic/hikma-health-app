@@ -93,7 +93,7 @@ const Covid19Form = (props) => {
 
   const [isCollapsed, setIsCollapsed] = useState(true)
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const patient = props.navigation.getParam('patient');
   const visitId = props.navigation.getParam('visitId');
 

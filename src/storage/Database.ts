@@ -142,7 +142,7 @@ class DatabaseImpl implements Database {
     const id = patient.id.replace(/-/g, "")
     return this.getDatabase()
       .then(db =>
-        db.executeSql(`INSERT INTO patients (id, given_name, surname, date_of_birth, country, hometown, phone, sex, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, image_timestamp, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`, [id, patient.given_name, patient.surname, patient.date_of_birth, patient.country, patient.hometown, patient.phone, patient.sex, patient.medical_record_num, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, null, date])
+        db.executeSql(`INSERT INTO patients (id, given_name, surname, date_of_birth, country, hometown, phone, sex, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, image_timestamp, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`, [id, patient.given_name, patient.surname, patient.date_of_birth, patient.country, patient.hometown, patient.phone, patient.sex, patient.medical_record_num, patient.local_id, patient.address, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, null, date])
       )
       .then(([results]) => {
         console.log(
@@ -155,7 +155,7 @@ class DatabaseImpl implements Database {
     const date = new Date().toISOString();
     return this.getDatabase()
       .then(db =>
-        db.executeSql(`UPDATE patients SET given_name = ?, surname = ?, date_of_birth = ?, country = ?, hometown = ?, phone = ?, sex = ?, medical_record_num = ? , attention_datetime = ? , attending_resources = ? , origin = ? , age = ? , email = ? , educational_status = ? , religion = ? , marital_status = ? , occupation = ? , mother_name = ? , father_name = ? , delivery_place = ? , delivery_datetime = ? , gestational_age = ? , delivery_care = ? , delivery_via = ? , presentation = ? , birthing_events = ?, image_timestamp = ?, edited_at = ? WHERE id = ?`, [patient.given_name, patient.surname, patient.date_of_birth, patient.country, patient.hometown, patient.phone, patient.sex, patient.medical_record_num, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, null, date, patient.id])
+        db.executeSql(`UPDATE patients SET given_name = ?, surname = ?, date_of_birth = ?, country = ?, hometown = ?, phone = ?, sex = ?, medical_record_num = ? , local_id = ?, address = ?, attention_datetime = ? , attending_resources = ? , origin = ? , age = ? , email = ? , educational_status = ? , religion = ? , marital_status = ? , occupation = ? , mother_name = ? , father_name = ? , delivery_place = ? , delivery_datetime = ? , gestational_age = ? , delivery_care = ? , delivery_via = ? , presentation = ? , birthing_events = ?, image_timestamp = ?, edited_at = ? WHERE id = ?`, [patient.given_name, patient.surname, patient.date_of_birth, patient.country, patient.hometown, patient.phone, patient.sex, patient.medical_record_num, patient.local_id, patient.address, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, null, date, patient.id])
       )
       .then(async ([results]) => {
         return this.getPatient(patient.id)
@@ -316,7 +316,7 @@ class DatabaseImpl implements Database {
     console.log("[db] Fetching patients from the db...");
     return this.getDatabase()
       .then(db =>
-        db.executeSql("SELECT id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events FROM patients ORDER BY edited_at DESC LIMIT 25;")
+        db.executeSql("SELECT id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events FROM patients ORDER BY edited_at DESC LIMIT 25;")
       )
       .then(async ([results]) => {
         if (results === undefined) {
@@ -327,7 +327,7 @@ class DatabaseImpl implements Database {
         for (let i = 0; i < count; i++) {
 
           const row = results.rows.item(i);
-          const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
+          const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
 
           const camp = await this.getLatestPatientEventByType(id, EventTypes.Camp)
           const givenNameContent = await this.languageStringDataById(given_name)
@@ -335,7 +335,7 @@ class DatabaseImpl implements Database {
           const countryContent = await this.languageStringDataById(country)
           const hometownContent = await this.languageStringDataById(hometown)
           console.log(`[db] Patient name: ${given_name}, id: ${id}`);
-          patients.push({ id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events });
+          patients.push({ id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events });
         }
         return patients;
       });
@@ -362,7 +362,7 @@ class DatabaseImpl implements Database {
   public searchPatients(givenName: string, surname: string, country: string, hometown: string, camp: string, phone: string, minYear: number, maxYear: number): Promise<Patient[]> {
     let queryTerms = '';
 
-    const queryBase = "SELECT DISTINCT patients.id, patients.given_name, patients.surname, patients.date_of_birth, patients.country, patients.hometown, patients.sex, patients.phone, patient.medical_record_num, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, patients.edited_at FROM patients LEFT JOIN string_content ON patients.given_name = string_content.id OR patients.surname = string_content.id OR patients.country = string_content.id OR patients.hometown = string_content.id LEFT JOIN events ON patients.id = events.patient_id"
+    const queryBase = "SELECT DISTINCT patients.id, patients.given_name, patients.surname, patients.date_of_birth, patients.country, patients.hometown, patients.sex, patients.phone, patient.medical_record_num, patient.local_id, patient.address, patient.attention_datetime, patient.attending_resources, patient.origin, patient.age, patient.email, patient.educational_status, patient.religion, patient.marital_status, patient.occupation, patient.mother_name, patient.father_name, patient.delivery_place, patient.delivery_datetime, patient.gestational_age, patient.delivery_care, patient.delivery_via, patient.presentation, patient.birthing_events, patients.edited_at FROM patients LEFT JOIN string_content ON patients.given_name = string_content.id OR patients.surname = string_content.id OR patients.country = string_content.id OR patients.hometown = string_content.id LEFT JOIN events ON patients.id = events.patient_id"
 
     if (!!givenName) {
       queryTerms += this.fuzzySearch(givenName.trim().toLowerCase())
@@ -431,7 +431,7 @@ class DatabaseImpl implements Database {
         for (let i = 0; i < count; i++) {
 
           const row = results.rows.item(i);
-          const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
+          const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
           const camp = await this.getLatestPatientEventByType(id, EventTypes.Camp)
 
           const givenNameContent = await this.languageStringDataById(given_name)
@@ -439,7 +439,7 @@ class DatabaseImpl implements Database {
           const countryContent = await this.languageStringDataById(country)
           const hometownContent = await this.languageStringDataById(hometown)
           console.log(`[db] Patient name: ${given_name}, id: ${id}`);
-          patients.push({ id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events });
+          patients.push({ id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events });
         }
         return patients;
       });
@@ -504,14 +504,14 @@ class DatabaseImpl implements Database {
     console.log("[db] Fetching patients from the db...");
     return this.getDatabase()
       .then(db =>
-        db.executeSql("SELECT id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events FROM patients WHERE id = ?;", [patient_id])
+        db.executeSql("SELECT id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events FROM patients WHERE id = ?;", [patient_id])
       )
       .then(async ([results]) => {
         if (results === undefined) {
           return;
         }
         const row = results.rows.item(0);
-        const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
+        const { id, given_name, surname, date_of_birth, country, hometown, sex, phone, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events } = row;
         const camp = await this.getLatestPatientEventByType(id, EventTypes.Camp)
 
         const givenNameContent = await this.languageStringDataById(given_name)
@@ -519,7 +519,7 @@ class DatabaseImpl implements Database {
         const countryContent = await this.languageStringDataById(country)
         const hometownContent = await this.languageStringDataById(hometown)
 
-        const editedPatient: Patient = { id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events };
+        const editedPatient: Patient = { id, given_name: givenNameContent, surname: surnameContent, date_of_birth, country: countryContent, hometown: hometownContent, sex, phone, camp, medical_record_num, local_id, address, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events };
         console.log(
           `[db] Edited patient with id: "${id}"!`
         );

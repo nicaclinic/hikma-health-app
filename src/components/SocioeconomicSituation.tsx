@@ -167,7 +167,7 @@ const SocioeconomicSituation = (props) => {
   const [women, setWomen] = useState(null);
   const [men, setMen] = useState(null);
   const [peopleWorkingNumber, setPeopleWorkingNumber] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
@@ -224,7 +224,7 @@ const SocioeconomicSituation = (props) => {
             numberOfLines={10}
             style={styles.inputs}
             onChangeText={(text) => setBedrooms(text)}
-            value={house}
+            value={bedrooms}
             placeholder={LocalizedStrings[language].bedrooms}
           />
         </View>

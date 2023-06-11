@@ -28,6 +28,7 @@ export enum EventTypes {
   PostnatalHistory = "Postnatal history",
   Feeding = "Feeding",
   Immunizations = "Immunizations",
+  AdultImmunizations = "Adult Immunizations",
   PsychomotorDevelopment = "Psychomotor Development",
   PediatricPathologicalHistory = "Pediatric Pathological Personal History",
   PediatricPhysicalExam = "Pediatric Physical Exam",

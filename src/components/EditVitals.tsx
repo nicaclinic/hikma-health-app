@@ -11,7 +11,7 @@ import Header from './shared/Header';
 const EditVitals = (props) => {
   const event = props.navigation.getParam('event');
   const metadata = props.navigation.getParam('event').event_metadata;
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [heartRate, setHeartRate] = useState(null);
   const [systolic, setSystolic] = useState(null);
   const [diastolic, setDiastolic] = useState(null);

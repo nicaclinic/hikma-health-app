@@ -32,7 +32,7 @@ const PediatricPathologicalHistory = (props) => {
   const [allergies, setAllergies] = useState(null);
   const [hospitalizations, setHospitalizations] = useState(null);
   const [others, setOthers] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');

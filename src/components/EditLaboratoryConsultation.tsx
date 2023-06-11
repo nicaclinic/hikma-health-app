@@ -16,23 +16,15 @@ const EditLaboratoryConsultation = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [date, setDate] = useState(null);
-  const [names, setNames] = useState(null);
-  const [surname, setSurname] = useState(null);
-  const [id, setId] = useState(null);
-  const [origin, setOrigin] = useState(null);
   const [testPerformed, setTestPerformed] = useState(null);
   const [resource, setResource] = useState(null);
   const [minsaCode, setMinsaCode] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
       setDate(metadataObj.date)
-      setNames(metadataObj.names)
-      setSurname(metadataObj.surname)
-      setId(metadataObj.id)
-      setOrigin(metadataObj.origin)
       setTestPerformed(metadataObj.ultrasoundConsultation)
       setResource(metadataObj.resource)
       setMinsaCode(metadataObj.minsaCode)
@@ -45,10 +37,6 @@ const EditLaboratoryConsultation = (props) => {
       JSON.stringify({
         doctor: userName,
         date,
-        names,
-        surname,
-        id,
-        origin,
         testPerformed,
         resource,
         minsaCode
@@ -87,54 +75,6 @@ const EditLaboratoryConsultation = (props) => {
             onDateChange={(date) => setDate(date)}
           />
         </View >
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].names}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setNames(text)}
-            value={names}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].surname}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setSurname(text)}
-            value={surname}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].id}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setId(text)}
-            value={id}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].origin}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.inputs}
-            onChangeText={(text) => setOrigin(text)}
-            value={origin}
-          />
-        </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].testPerformed}</Text>
         </View>

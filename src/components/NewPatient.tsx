@@ -115,6 +115,8 @@ const NewPatient = (props) => {
   const [male, setMale] = useState(false);
   const [country, setCountry] = useState('');
   const [hometown, setHometown] = useState('');
+  const [localId, setLocalId] = useState('');
+  const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'))
   const [camp, setCamp] = useState('');
@@ -170,6 +172,14 @@ const NewPatient = (props) => {
     const countryId = await database.saveStringContent([{ language: language, content: country }])
     const hometownId = await database.saveStringContent([{ language: language, content: hometown }])
 
+    var birthDate = new Date(dob);
+    const bDate = [
+      ('0' + birthDate.getDate()).slice(-2), 
+      ('0' + (birthDate.getMonth() + 1)).slice(-2), 
+      ((birthDate.getFullYear()%100))
+    ].join('');
+    const medicalRecordNum = "111" + givenName.substring(0, 2).toLocaleUpperCase() + surname.substring(0, 2).toLocaleUpperCase() +  (male ? 'M' : 'F') + bDate.toString() + Math.floor(Math.random() * 90 + 1);
+
     database.addPatient({
       id: patientId,
       given_name: givenNameId,
@@ -177,10 +187,11 @@ const NewPatient = (props) => {
       date_of_birth: dob,
       country: countryId,
       hometown: hometownId,
+      local_id: localId,
+      address: address,
       phone: phone,
       sex: male ? 'M' : 'F',
-
-      medical_record_num: patientId,
+      medical_record_num: medicalRecordNum,
       attention_datetime: attentionDateTime,
       attending_resources: resourceThatAttends,
       origin: origin,
@@ -232,7 +243,7 @@ const NewPatient = (props) => {
             style={styles.inputs}
             placeholder={LocalizedStrings[language].medicalRecordNum}
             onChangeText={(text) => setMedicalRecordNum(text)}
-            value={patientId}
+            value={medicalRecordNum}
             editable = {false}
           />
         </View>
@@ -344,6 +355,28 @@ const NewPatient = (props) => {
               editable = {false}
             />
           </View>
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].localId}</Text>
+        </View>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.inputs}
+            placeholder={LocalizedStrings[language].localId}
+            onChangeText={(text) => setLocalId(text)}
+            value={localId}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].address}</Text>
+        </View>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.inputs}
+            placeholder={LocalizedStrings[language].address}
+            onChangeText={(text) => setAddress(text)}
+            value={address}
+          />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].phone}</Text>

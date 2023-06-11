@@ -12,7 +12,7 @@ import Header from './shared/Header';
 const EditPhysiotherapy = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
   const [previousTreatment, setPreviousTreatment] = useState(null);
   const [previousTreatmentText, setPreviousTreatmentText] = useState(null);
   const [complaint, setComplaint] = useState(null);

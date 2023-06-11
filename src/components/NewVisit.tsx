@@ -199,9 +199,15 @@ const NewVisit = (props) => {
         <View style={styles.gridContainer}>
           <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('PhysicalExploration', { patientId: patient.id, visitId, userName, language })}>
             <View style={styles.actionIcon}>
-              <Image source={require('../images/vitals.png')} style={{ width: 66, height: 31 }} />
+              <Image source={require('../images/stethoscope.png')} style={{ width: 66, height: 31 }} />
             </View>
             <Text style={styles.actionText}>{LocalizedStrings[language].physicalExploration}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('AdultImmunizations', { patientId: patient.id, visitId, userName, language })}>
+            <View style={styles.actionIcon}>
+              <Image source={require('../images/medicine.png')} style={{ width: 66, height: 31 }} />
+            </View>
+            <Text style={styles.actionText}>{LocalizedStrings[language].adultImmunizations}</Text>
           </TouchableOpacity>
         </View>
 

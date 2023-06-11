@@ -28,7 +28,7 @@ const EditNonPathologicalHistory = (props) => {
   const [drugsFrequency, setDrugsFrequency] = useState(null);
   const [drugsType, setDrugsType] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {

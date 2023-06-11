@@ -29,6 +29,7 @@ import { NursingNoteDisplay } from "./NursingNote";
 import { UltrasoundConsultationDisplay } from "./UltrasoundConsultation";
 import { LaboratoryConsultationDisplay } from "./LaboratoryConsultation";
 import { OdontologyConsultationDisplay } from "./OdontologyConsultation";
+import { AdultImmunizationsDisplay } from "./AdultImmunizations";
 
 import Header from "./shared/Header";
 
@@ -38,7 +39,7 @@ const EventList = (props) => {
   const userName = props.navigation.getParam('userName');
 
   const [list, setList] = useState(props.navigation.getParam('events', []));
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     database.getEvents(visit.id).then(events => {
@@ -108,6 +109,8 @@ const EventList = (props) => {
         props.navigation.navigate('EditSubsequentEvolutionNote', { event, language, userName })
       case EventTypes.NursingNote:
         props.navigation.navigate('EditNursingNote', { event, language, userName })
+      case EventTypes.AdultImmunizations:
+        props.navigation.navigate('EditAdultImmunizations', { event, language, userName })
       case EventTypes.UltrasoundConsultation:
         props.navigation.navigate('EditUltrasoundConsultation', { event, language, userName })
       case EventTypes.LaboratoryConsultation:
@@ -210,6 +213,10 @@ const EventList = (props) => {
         eventTypeText = LocalizedStrings[language].nursingNote
         display = NursingNoteDisplay(metadataObj, language)
         break
+      case EventTypes.AdultImmunizations:
+        eventTypeText = LocalizedStrings[language].adultImmunizations
+        display = AdultImmunizationsDisplay(metadataObj, language)
+        break
       case EventTypes.UltrasoundConsultation:
         eventTypeText = LocalizedStrings[language].ultrasoundConsultation
         display = UltrasoundConsultationDisplay(metadataObj, language)
@@ -230,7 +237,9 @@ const EventList = (props) => {
     const time = new Date(item.event_timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
 
     return (
-      <TouchableOpacity style={styles.card} onLongPress={() => editEvent(item)}>
+      <TouchableOpacity style={styles.card}
+      //  onLongPress={() => editEvent(item)}
+       >
         <View style={styles.cardContent} >
           <View style={{ margin: 10 }}>
             <Text>{`${eventTypeText}, ${time}`}</Text>

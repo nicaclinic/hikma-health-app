@@ -28,7 +28,7 @@ const EditGynecologicalBackground = (props) => {
   const [abortions, setAbortions] = useState(null);
   const [curettage, setCurettage] = useState(null);
 
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   useEffect(() => {
     if (!!event.event_metadata) {
@@ -92,25 +92,16 @@ const EditGynecologicalBackground = (props) => {
             value={menarche}
           />
         </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].sexualLifeBeginning}</Text>
+        </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
-          <DatePicker
-            style={styles.datePicker}
-            date={sexualLifeBeginning}
-            mode="date"
-            placeholder={LocalizedStrings[language].sexualLifeBeginning}
-            format="YYYY-MM-DD"
-            minDate="1900-05-01"
-            maxDate={today.toISOString().split('T')[0]}
-            confirmBtnText={LocalizedStrings[language].confirm}
-            cancelBtnText={LocalizedStrings[language].cancel}
-            customStyles={{
-              dateInput: {
-                alignItems: 'flex-start',
-                borderWidth: 0
-              }
-            }}
-            androidMode='spinner'
-            onDateChange={(date) => setSexualLifeBeginning(date)}
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={styles.inputs}
+            onChangeText={(text) => setSexualLifeBeginning(text)}
+            value={sexualLifeBeginning}
           />
         </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
@@ -136,6 +127,9 @@ const EditGynecologicalBackground = (props) => {
             onChangeText={(text) => setFamilyPlanning(text)}
             value={familyPlanning}
           />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].lastMenstrualPeriodDate}</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <DatePicker
@@ -173,6 +167,9 @@ const EditGynecologicalBackground = (props) => {
             value={weeksOfAmenorrhea}
           />
         </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].estimatedDueDate}</Text>
+        </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <DatePicker
             style={styles.datePicker}
@@ -193,6 +190,9 @@ const EditGynecologicalBackground = (props) => {
             androidMode='spinner'
             onDateChange={(date) => setEstimatedDueDate(date)}
           />
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].lastDeliveryDate}</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <DatePicker

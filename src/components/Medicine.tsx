@@ -48,7 +48,7 @@ const Medicine = (props) => {
   const [type, setType] = useState(null);
   const [dosage, setDosage] = useState(null);
   const [days, setDays] = useState(null);
-  const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
+  const [language, setLanguage] = useState(props.navigation.getParam('language', 'sp'));
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
